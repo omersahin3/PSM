@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="login">
+        <div class="login-header">
+            <img src="assets/images/ankageo.png">
+            <h2>Ankageo</h2>
+        </div>
+        <div class="login-form">
+            <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-group" id="form">
+                <label>
+                    <span class="input-title">User name</span>
+                    <input type="text" placeholder="Username" formControlName="username">
+                    <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)" class="noValue">
+                        <span *ngIf="loginForm.controls['username'].errors?.required">User name is required</span>
+                        <span *ngIf="loginForm.controls['username'].errors?.minlength">User name is very short</span>
+                    </div>
+                </label>
+                <label>
+                    <span class="input-title">Password</span>
+                    <input type="password" placeholder="Password" formControlName="password">
+                    <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="noValue">
+                        <span *ngIf="loginForm.controls['password'].errors?.required">Password is required</span>
+                        <span *ngIf="loginForm.controls['password'].errors?.minlength">Password is very short</span>
+                    </div>
+                </label>
+                <div class="noValue">
+                    <span></span>
+                </div>
+                <div class="login-button">
+                    <button type="submit" mat-raised-button color="primary">LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

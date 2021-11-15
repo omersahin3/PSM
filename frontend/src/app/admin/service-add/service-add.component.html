@@ -1,0 +1,34 @@
+<div class="service-add">
+    <div class="title">
+      <h2>Add Service</h2>
+      <button mat-button mat-dialog-close>
+        <mat-icon class="icon">close</mat-icon>
+      </button>
+    </div>
+    <hr>
+    <div mat-dialog-content class="body">
+      <form [formGroup]="serviceForm">
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Service Name</mat-label>
+          <input matInput placeholder="Service Name" formControlName="name" required>
+        </mat-form-field>
+        <span *ngIf="serviceForm.controls['name'].invalid && (serviceForm.controls['name'].dirty || serviceForm.controls['name'].touched)" class="noValue">
+            *Please enter service name
+        </span>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="3" formControlName="description" required></textarea>
+        </mat-form-field>
+        <span *ngIf="serviceForm.controls['description'].invalid && (serviceForm.controls['description'].dirty || serviceForm.controls['description'].touched)" class="noValue">
+          *Please enter description
+        </span>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <div class="buttons">
+        <button mat-stroked-button mat-dialog-close mat-dialog-close="false" class="cancel" color="purple">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="serviceForm.invalid">Save</button>
+      </div>
+    </div>
+  </div>
+  

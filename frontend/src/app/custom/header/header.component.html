@@ -1,0 +1,20 @@
+<div class="header">
+  <mat-toolbar>
+    <button mat-icon-button class="icon" (click)="changeSidebar()" aria-label="Icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="profile">
+      <mat-icon>person</mat-icon><span> {{ currentUser.username }} </span>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #profile="matMenu">
+      <button mat-menu-item style="color: white;" (click)="openProfile()">My Profile</button>
+      <button mat-menu-item style="color: white;" (click)="changePassword()">Change Password</button>
+    </mat-menu>
+    <button mat-icon-button aria-label="Sign out" routerLink="/login" (click)="logout()">
+      <mat-icon>keyboard_tab</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+

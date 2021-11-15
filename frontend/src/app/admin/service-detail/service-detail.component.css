@@ -1,0 +1,45 @@
+.service-detail .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.service-detail .title h2 {
+    margin: 16px;
+}
+.service-detail .title .icon {
+    font-size: 24px;
+    color: #4B4B4B;
+    margin: 16px;
+}
+.service-detail .body form {
+    display: flex;
+    flex-direction: column;
+    margin: 36px 36px 0px 36px;
+}
+.mat-form-field{
+    width: 350px;
+    caret-color: #D4D4D4;
+}
+.buttons .cancel {
+    margin-right: 20px;
+}
+.service-detail .mat-input-element:disabled,
+.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+  color: gray;
+}
+::ng-deep .custom-style-warn .mat-simple-snackbar-action {
+    color: white !important;
+}
+::ng-deep .mat-dialog-container{
+    background-color: #151319;
+    color: #D4D4D4;
+    padding: 0px !important;
+    overflow: hidden !important;
+}
+::ng-deep .mat-form-field span.mat-form-field-label-wrapper label {
+    color:#D4D4D4 !important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #00000072 !important; 
+}
+

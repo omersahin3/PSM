@@ -1,0 +1,22 @@
+<div class="server-detail">
+    <div class="title">
+      <h2>Detail Server</h2>
+      <button mat-button mat-dialog-close>
+        <mat-icon class="icon">close</mat-icon>
+      </button>
+    </div>
+    <hr>
+    <div mat-dialog-content class="body">
+      <form [formGroup]="serverForm">
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Server Name</mat-label>
+          <input matInput placeholder="Server Name" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="3" formControlName="description" required></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+</div>
+  

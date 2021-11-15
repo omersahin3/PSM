@@ -1,0 +1,15 @@
+.sidebar .company h2{
+    font-size: 20px !important;
+}
+.sidebar .company img{
+    width: 33px !important;
+    height: 33px !important;
+}
+.sidebar .item a{
+    font-size: 15px !important;
+}
+.mat-sidenav{
+    min-width: 180px !important;
+    /* app.component.css */
+}
+

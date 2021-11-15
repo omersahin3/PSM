@@ -1,0 +1,53 @@
+<div class="profile">
+    <div class="title">
+      <h2>My Profile</h2>
+      <button mat-button mat-dialog-close>
+        <mat-icon class="icon">close</mat-icon>
+      </button>
+    </div>
+    <hr>
+    <div mat-dialog-content class="body">
+      <form [formGroup]="profileForm">
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Firstname" formControlName="fname">
+        </mat-form-field>
+        <span *ngIf="profileForm.controls['fname'].invalid && (profileForm.controls['fname'].dirty || profileForm.controls['fname'].touched)" class="noValue">
+            *Please enter your first name
+        </span>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Lastname" formControlName="lname">
+        </mat-form-field>
+        <span *ngIf="profileForm.controls['lname'].invalid && (profileForm.controls['lname'].dirty || profileForm.controls['lname'].touched)" class="noValue">
+          *Please enter your last name
+        </span>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone" formControlName="phone">
+        </mat-form-field>
+        <span *ngIf="profileForm.controls['phone'].invalid && (profileForm.controls['phone'].dirty || profileForm.controls['phone'].touched)" class="noValue">
+          *Please enter your phone number
+        </span>
+        <mat-form-field appearance="fill" class="form-input">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="E-mail" formControlName="email">
+          </mat-form-field>
+          <span *ngIf="profileForm.controls['email'].invalid && (profileForm.controls['email'].dirty || profileForm.controls['email'].touched)" class="noValue">
+            *Please enter your E-mail
+        </span>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <div class="buttons">
+        <button mat-stroked-button mat-dialog-close mat-dialog-close="false" class="cancel">Cancel</button>
+        <button mat-raised-button color="primary" (click)="editMode()" *ngIf="editModeState">Edit</button>
+        <button mat-raised-button *ngIf="!editModeState" (click)="updateProfile()">Save</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,56 @@
+@import "../../../app/app.tablet.css" screen and  (max-width: 991.98px);
+@import "../../../app/app.landscape.css" screen and (max-width: 767.98px);
+@import "../../../app/app.phone.css" screen and (max-width: 575.98px);
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+.sidebar .company{
+    padding: 40px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+}
+.sidebar .company h2{
+    color:whitesmoke;
+    font-size: 25px;
+}
+.sidebar .company img{
+    width: 50px;
+    height: 50px;
+}
+.hrline{
+    width: 80%;
+}
+hr{
+    margin: 20px 0px 20px 0px;
+    height: 2px;
+    background-color:rgb(59, 59, 59);
+    border: none;
+}
+.item{
+    width: 100%;
+}
+.sidebar .item a{
+    font-size: 20px;
+    text-decoration: none;
+    color: whitesmoke;
+    display: block;
+}
+.sidebar .item a:hover{
+    background-color: #FFFFFF0F;
+}
+.sidebar .item .mat-icon{
+    margin: 10px 20px 0 0;
+    padding: 0 10% 0 20%;
+}
+.sidebar .item p{
+    display: inline-block;
+}
+.arouter{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

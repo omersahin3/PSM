@@ -1,0 +1,21 @@
+<div class="main">
+    <div class="h"><app-header (toggle)="changeSidebar()"></app-header></div>
+    <div class="b">
+      <mat-sidenav-container>
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            <app-sidebar></app-sidebar>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <app-content></app-content>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    </div>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  

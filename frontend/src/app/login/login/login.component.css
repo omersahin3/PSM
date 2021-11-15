@@ -1,0 +1,77 @@
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: #0E0E10;
+    min-width: 550px;
+}
+
+.login{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 34px;
+}
+.login-header img{
+    width: 140px;
+    height: 140px;
+}
+.login-header h2{
+    font-size: 70px;
+    color: #B8B8B8;
+    margin-right: 20px;
+}
+.login-form{
+    display: flex;
+}
+.login-form label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+.login-form .input-title{
+    color: #B8B8B8;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+.login-form input{
+    outline: none;
+    border: 1px #707070;
+    border-radius: 5px;
+    width: 350px;
+    height: 37px;
+    padding-left: 5px;
+}
+.login-form button{
+    margin-top: 37px;
+    width: 350px;
+    height: 37px;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+}
+.noValue span{
+    color: red !important;
+}
+/* SNACKBAR */
+::ng-deep .custom-style {
+    background-color:#6AB795;
+    color: white !important; 
+}
+::ng-deep .custom-style .mat-simple-snackbar-action {
+    color: white !important;
+}
+::ng-deep .custom-style-warn {
+    background-color: #F83131;
+    color: white !important;
+}
+::ng-deep .custom-style-warn .mat-simple-snackbar-action {
+    color: white !important;
+}

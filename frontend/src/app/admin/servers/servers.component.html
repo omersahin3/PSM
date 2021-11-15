@@ -1,0 +1,55 @@
+<div class="servers">
+    <div class="title">
+        <h2>Servers</h2>
+    </div>
+    <div class="attribute">
+        <button mat-flat-button color="primary" (click)="addServer()">Add Servers</button>
+        <div class="search">
+            <mat-icon class="search-icon">search</mat-icon>
+            <mat-form-field >
+                <input (keyup)="applyFilter($event)" matInput placeholder="Filter">
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort color="primary">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.position}} </mat-cell>
+        </ng-container>
+        
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Server </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.name}} </mat-cell>
+        </ng-container>
+        
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Created Time </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.weight}} </mat-cell>
+        </ng-container>
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol"> 
+            <mat-header-cell *matHeaderCellDef> Updated Time </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.symbol}} </mat-cell>
+        </ng-container>
+        <!-- Edit -->
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Edit Company Information" (click)="serverEdit(element)">
+                <mat-icon>create</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Company Detail" (click)="serverDetail(element)">
+                <mat-icon>more_horiz</mat-icon>
+            </button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    <div class="box">box</div>
+</div>

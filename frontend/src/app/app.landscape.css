@@ -1,0 +1,23 @@
+.sidebar .company h2{
+    font-size: 15px !important;
+}
+.sidebar .company img{
+    width: 27px !important;
+    height: 27px !important;
+}
+.sidebar .item a{
+    font-size: 12px !important;
+}
+.mat-sidenav{
+    min-width: 115px !important;
+    /* app.component.css */
+}
+.sidebar .item .mat-icon{
+    padding: 0 10% 0 10% !important;
+}
+@media (max-width: 739.98px) { 
+    .cards{
+        grid-template: repeat(12, 1fr) / repeat(1, 1fr) !important;
+    }
+}
+

@@ -1,0 +1,60 @@
+.server-add .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.server-add .title h2 {
+    margin: 16px;
+}
+.server-add .title .icon {
+    font-size: 24px;
+    color: #4B4B4B;
+    margin: 16px;
+}
+.server-add .body form {
+    display: flex;
+    flex-direction: column;
+    margin: 36px 36px 0px 36px;
+}
+.mat-form-field{
+    width: 350px;
+    caret-color: #D4D4D4;
+}
+
+.server-add .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px 36px 30px 0px;
+    width: 100%;
+}
+.buttons .cancel {
+    margin-right: 20px;
+}
+.server-add .noValue {
+    color: red;
+    font-size: small;
+    margin-top:-15px;
+}
+.server-add .mat-input-element:disabled,
+.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+  color: gray;
+}
+::ng-deep .custom-style-warn .mat-simple-snackbar-action {
+    color: white !important;
+}
+::ng-deep .mat-dialog-container{
+    background-color: #151319;
+    color: #D4D4D4;
+    padding: 0px !important;
+    overflow: hidden !important;
+}
+::ng-deep .mat-form-field span.mat-form-field-label-wrapper label {
+    color:#D4D4D4 !important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #00000072 !important; 
+}
+.mat-stroked-button.mat-purple {
+    border-color: #9A6AEF;
+    color: #9A6AEF;
+}

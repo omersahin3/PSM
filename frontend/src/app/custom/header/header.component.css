@@ -1,0 +1,17 @@
+.mat-toolbar{
+    background-color: #18181B;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+.mat-icon {
+    color: white;
+}
+span {
+    font-size: 13px;
+    margin: 0 5px;
+    color: whitesmoke;
+}
+::ng-deep .mat-menu-content {
+    background-color: #18181B;
+}
