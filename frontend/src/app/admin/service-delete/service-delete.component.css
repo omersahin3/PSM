@@ -1,0 +1,21 @@
+.delete-service .body p{
+  font-size: 18px;
+  padding: 15px 162px 0px 22px;
+}
+.mat-dialog-actions{
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 28px 35px 0px;
+}
+.buttons .cancel {
+  margin-right: 20px;
+}
+
+::ng-deep .mat-dialog-container{
+  background-color: #151319;
+  color: #D4D4D4;
+  padding: 0px !important;
+  overflow: hidden !important;
+}
+
+

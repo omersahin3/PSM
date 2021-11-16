@@ -37,7 +37,7 @@ export class ServerAddComponent implements OnInit {
       this.alertifyService.success(data.dns_name + " Successfully added !")
       this.dialogRef.closeAll();
     }, error => {
-      console.log(error + "Could not add service");
+      console.log(error + "Could not add server");
     });
   }
 }

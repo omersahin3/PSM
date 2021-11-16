@@ -41,7 +41,7 @@ export class ServerEditComponent implements OnInit {
       this.alertifyService.success(this.data.dns_name + " Successfully changed !")
       this.dialogRef.closeAll();
     }, error => {
-      console.log(error + "Could not add server");
+      console.log(error + "Could not edit server");
     });
   }
 }

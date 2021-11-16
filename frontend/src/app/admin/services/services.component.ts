@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ServiceService } from 'src/app/services/service.service';
 import { ServiceResponse } from '../model';
 import { ServiceAddComponent } from '../service-add/service-add.component';
+import { ServiceDeleteComponent } from '../service-delete/service-delete.component';
 import { ServiceDetailComponent } from '../service-detail/service-detail.component';
 import { ServiceEditComponent } from '../service-edit/service-edit.component';
 
@@ -48,6 +49,9 @@ export class ServicesComponent implements OnInit {
   }
   serviceDetail(service: ServiceResponse){  
     this.dialog.open(ServiceDetailComponent, { data: service })
+  }
+  deleteService(server: ServiceResponse) {
+    this.dialog.open(ServiceDeleteComponent, { data: server }).afterClosed().subscribe(() => {this.retrieveServices(); });
   }
 
   retrieveServices(): void {

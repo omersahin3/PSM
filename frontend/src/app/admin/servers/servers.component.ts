@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ServerService } from 'src/app/services/server.service';
 import { ServerResponse } from '../model';
 import { ServerAddComponent } from '../server-add/server-add.component';
+import { ServerDeleteComponent } from '../server-delete/server-delete.component';
 import { ServerDetailComponent } from '../server-detail/server-detail.component';
 import { ServerEditComponent } from '../server-edit/server-edit.component';
 
@@ -47,6 +48,10 @@ export class ServersComponent implements OnInit {
   serverDetail(server: ServerResponse){  
     this.dialog.open(ServerDetailComponent, { data: server })
   }
+  deleteServer(server: ServerResponse) {
+    this.dialog.open(ServerDeleteComponent, { data: server }).afterClosed().subscribe(() => {this.retrieveServers(); });
+  }
+
   retrieveServers(): void {
     this.serverService.getAll().subscribe(data => {
       this.dataSource.data = data;

@@ -14,6 +14,8 @@ import { ServerAddComponent } from './server-add/server-add.component';
 import { ServerEditComponent } from './server-edit/server-edit.component';
 import { ServerDetailComponent } from './server-detail/server-detail.component';
 import { LoginGuard } from '../login/login.guard';
+import { ServerDeleteComponent } from './server-delete/server-delete.component';
+import { ServiceDeleteComponent } from './service-delete/service-delete.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,8 @@ const routes: Routes = [
     ServerAddComponent,
     ServerEditComponent,
     ServerDetailComponent,
+    ServerDeleteComponent,
+    ServiceDeleteComponent,
   ],
   imports: [
     CommonModule,
