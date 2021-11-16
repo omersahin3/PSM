@@ -7,19 +7,26 @@
     </div>
     <hr>
     <div mat-dialog-content class="body">
-      <form [formGroup]="serverForm">
+      <form [formGroup]="serverEditForm">
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Server Name</mat-label>
-          <input matInput placeholder="Server Name" formControlName="name" required>
+          <input matInput placeholder="Server Name" formControlName="dns_name" required>
         </mat-form-field>
-        <span *ngIf="serverForm.controls['name'].invalid && (serverForm.controls['name'].dirty || serverForm.controls['name'].touched)" class="noValue">
+        <span *ngIf="serverEditForm.controls['dns_name'].invalid && (serverEditForm.controls['dns_name'].dirty || serverEditForm.controls['dns_name'].touched)" class="noValue">
             *Please enter dns name
+        </span>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label> IP Adress </mat-label>
+          <input matInput placeholder="IP Adress" formControlName="ip_adress" required>
+        </mat-form-field>
+        <span *ngIf="serverEditForm.controls['ip_adress'].invalid && (serverEditForm.controls['ip_adress'].dirty || serverEditForm.controls['ip_adress'].touched)" class="noValue">
+          *Please enter ip adress
         </span>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Description</mat-label>
           <textarea matInput rows="3" formControlName="description" required></textarea>
         </mat-form-field>
-        <span *ngIf="serverForm.controls['description'].invalid && (serverForm.controls['description'].dirty || serverForm.controls['description'].touched)" class="noValue">
+        <span *ngIf="serverEditForm.controls['description'].invalid && (serverEditForm.controls['description'].dirty || serverEditForm.controls['description'].touched)" class="noValue">
           *Please enter description
         </span>
       </form>
@@ -27,7 +34,7 @@
     <div mat-dialog-actions>
       <div class="buttons">
         <button mat-stroked-button mat-dialog-close mat-dialog-close="false" class="cancel" color="purple">Cancel</button>
-        <button mat-raised-button color="primary" [disabled]="serverForm.invalid">Save</button>
+        <button mat-raised-button color="primary" [disabled]="serverEditForm.invalid" (click)="edit()">Save</button>
       </div>
     </div>
 </div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { ServerService } from 'src/app/services/server.service';
+import { Server } from '../model';
 
 @Component({
   selector: 'app-server-add',
@@ -8,17 +12,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ServerAddComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
-  serverForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder, private serverService : ServerService,
+    private alertifyService: AlertifyService, private dialogRef: MatDialog) { }
+  serverAddForm!: FormGroup;
+  server:Server = new Server();
 
   createserverForm() {
-    this.serverForm = this.formBuilder.group({
-      name: ["", Validators.required],
-      description: ["", Validators.required],
+    this.serverAddForm = this.formBuilder.group({
+      dns_name: ["", Validators.required],
+      ip_adress: ["", Validators.required],
+      description: ["", Validators.required]
     });
   }
   ngOnInit(): void {
     this.createserverForm();
   }
-
+  add() {
+    if (this.serverAddForm.valid)
+    {
+      this.server = Object.assign({}, this.serverAddForm.value)
+    }
+    this.serverService.create(this.server).subscribe(data => {
+      console.log(data)
+      this.alertifyService.success(data.dns_name + " Successfully added !")
+      this.dialogRef.closeAll();
+    }, error => {
+      console.log(error + "Could not add service");
+    });
+  }
 }

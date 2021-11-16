@@ -11,10 +11,10 @@
             </mat-form-field>
         </div>
     </div>
-    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort color="primary">
-        <!-- Position Column -->
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort color="primary" matSortActive="id" matSortDirection="asc">
+        <!-- ID Column -->
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
             <mat-cell *matCellDef="let element" (click)="serviceDetail(element)"> {{element.id}} </mat-cell>
         </ng-container>
         
@@ -64,7 +64,7 @@
             </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
     <div class="box">box</div>

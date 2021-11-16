@@ -17,7 +17,7 @@ import { ServiceEditComponent } from '../service-edit/service-edit.component';
 })
 export class ServicesComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private serviceService:ServiceService) { }
+  constructor(private dialog: MatDialog, private serviceService: ServiceService) { }
 
   ngOnInit(): void {
     this.retrieveServices();
@@ -25,9 +25,7 @@ export class ServicesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'description', 'status', 'createdAt', 'updatedAt', 'edit'];
   dataSource = new MatTableDataSource(Array<ServiceResponse>());
-  logData(row:object){
-    console.log(row);
-  }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -41,11 +39,11 @@ export class ServicesComponent implements OnInit {
   }
   
   addService() {
-    this.dialog.open(ServiceAddComponent).afterClosed().subscribe(result => {this.retrieveServices(); });
+    this.dialog.open(ServiceAddComponent).afterClosed().subscribe(() => {this.retrieveServices(); });
   }
 
   serviceEdit(service: ServiceResponse) {
-    this.dialog.open(ServiceEditComponent, { data: service }).afterClosed().subscribe(result => {this.retrieveServices(); });
+    this.dialog.open(ServiceEditComponent, { data: service }).afterClosed().subscribe(() => {this.retrieveServices(); });
     // console.log(service)
   }
   serviceDetail(service: ServiceResponse){  

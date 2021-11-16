@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   if (!req.body.name) {
     res.status(400).send({
-      message: "Username can not be empty!"
+      message: "Service name can not be empty!"
     });
     return;
   }

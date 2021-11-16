@@ -11,30 +11,31 @@
             </mat-form-field>
         </div>
     </div>
-    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort color="primary">
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.position}} </mat-cell>
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort color="primary" matSortActive="id" matSortDirection="asc">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.id}} </mat-cell>
         </ng-container>
         
         <!-- Name Column -->
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Server </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.name}} </mat-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.dns_name}} </mat-cell>
         </ng-container>
         
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Created Time </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.weight}} </mat-cell>
+        <!-- IP Adress Column -->
+        <ng-container matColumnDef="ip_adress"> 
+            <mat-header-cell *matHeaderCellDef> IP Adress </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.ip_adress}} </mat-cell>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.description}} </mat-cell>
         </ng-container>
         
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol"> 
-            <mat-header-cell *matHeaderCellDef> Updated Time </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serverDetail(element)"> {{element.symbol}} </mat-cell>
-        </ng-container>
         <!-- Edit -->
         <ng-container matColumnDef="edit">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>

@@ -8,16 +8,25 @@ export interface ServiceResponse {
 }
 export interface ServerResponse {
   id: number,
-  name: string,
+  dns_name: string,
   description: string,
+  ip_adress: string,
   createdAt: string,
   updatedAt: string
 }
-export class Service{ // export typescript kodu dışardan erişilmesini sağlıyor.
+export class Service{ 
   id!: number;
   name!: string;
   description!: string;
   status!: boolean;
+  createdAt!: string;
+  updatedAt!: string;
+}
+export class Server{ 
+  id!: number;
+  dns_name!: string;
+  description!: string;
+  ip_adress!: boolean;
   createdAt!: string;
   updatedAt!: string;
 }

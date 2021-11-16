@@ -10,19 +10,21 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ServerDetailComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder) { }
-  serverForm!: FormGroup;
+  serverDetailForm!: FormGroup;
 
   createserverForm() {
-    this.serverForm = this.formBuilder.group({
+    this.serverDetailForm = this.formBuilder.group({
       name: [{ value: '', disabled: true}, Validators.required],
-      description: [{ value: '', disabled: true}, Validators.required],
+      ip_adress: [{ value: '', disabled: true}, Validators.required],
+      description: [{ value: '', disabled: true}, Validators.required]
     });
   }
   ngOnInit(): void {
     this.createserverForm();
-    this.serverForm.patchValue({
-      name:this.data.name,
-      description: this.data.weight
+    this.serverDetailForm.patchValue({
+      name:this.data.dns_name,
+      ip_adress: this.data.ip_adress,
+      description: this.data.description
     });
   }
 

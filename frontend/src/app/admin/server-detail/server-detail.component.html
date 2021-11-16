@@ -7,10 +7,14 @@
     </div>
     <hr>
     <div mat-dialog-content class="body">
-      <form [formGroup]="serverForm">
+      <form [formGroup]="serverDetailForm">
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Server Name</mat-label>
           <input matInput placeholder="Server Name" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label> IP Adress </mat-label>
+          <input matInput placeholder="IP Adress" formControlName="ip_adress" required>
         </mat-form-field>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Description</mat-label>

@@ -3,6 +3,7 @@ const cors = require("cors");
 const { authRouter } = require('./routes/auth.routes');
 const { userRouter } = require('./routes/user.routes');
 const { serviceRouter } = require('./routes/service.routes');
+const { serverRouter } = require('./routes/server.routes');
 const app = express();
 
 
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
 app.use('/api/service', serviceRouter)
+app.use('/api/server', serverRouter)
 
 app.use((err, req, res, next) => {
     // console.log(err);
