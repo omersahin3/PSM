@@ -2,11 +2,12 @@ const express = require('express');
 const cors = require("cors");
 const { authRouter } = require('./routes/auth.routes');
 const { userRouter } = require('./routes/user.routes');
+const { serviceRouter } = require('./routes/service.routes');
 const app = express();
 
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "*"
 };
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
+app.use('/api/service', serviceRouter)
 
 app.use((err, req, res, next) => {
     // console.log(err);

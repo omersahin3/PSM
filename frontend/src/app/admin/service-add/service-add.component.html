@@ -7,19 +7,19 @@
     </div>
     <hr>
     <div mat-dialog-content class="body">
-      <form [formGroup]="serviceForm">
+      <form [formGroup]="serviceAddForm">
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Service Name</mat-label>
           <input matInput placeholder="Service Name" formControlName="name" required>
         </mat-form-field>
-        <span *ngIf="serviceForm.controls['name'].invalid && (serviceForm.controls['name'].dirty || serviceForm.controls['name'].touched)" class="noValue">
+        <span *ngIf="serviceAddForm.controls['name'].invalid && (serviceAddForm.controls['name'].dirty || serviceAddForm.controls['name'].touched)" class="noValue">
             *Please enter service name
         </span>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Description</mat-label>
           <textarea matInput rows="3" formControlName="description" required></textarea>
         </mat-form-field>
-        <span *ngIf="serviceForm.controls['description'].invalid && (serviceForm.controls['description'].dirty || serviceForm.controls['description'].touched)" class="noValue">
+        <span *ngIf="serviceAddForm.controls['description'].invalid && (serviceAddForm.controls['description'].dirty || serviceAddForm.controls['description'].touched)" class="noValue">
           *Please enter description
         </span>
       </form>
@@ -27,7 +27,7 @@
     <div mat-dialog-actions>
       <div class="buttons">
         <button mat-stroked-button mat-dialog-close mat-dialog-close="false" class="cancel" color="purple">Cancel</button>
-        <button mat-raised-button color="primary" [disabled]="serviceForm.invalid">Save</button>
+        <button mat-raised-button color="primary" [disabled]="serviceAddForm.invalid" (click)="add()">Save</button>
       </div>
     </div>
   </div>

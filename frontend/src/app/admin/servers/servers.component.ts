@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ServerResponse } from '../model';
 import { ServerAddComponent } from '../server-add/server-add.component';
 import { ServerDetailComponent } from '../server-detail/server-detail.component';
 import { ServerEditComponent } from '../server-edit/server-edit.component';
@@ -69,10 +70,4 @@ export class ServersComponent implements OnInit {
     this.dialog.open(ServerDetailComponent, { data: server })
   }
 }
-export interface ServerResponse {
-  id: number,
-  name: string,
-  description: string,
-  createdAt: string;
-  updatedAt: string;
-}
+

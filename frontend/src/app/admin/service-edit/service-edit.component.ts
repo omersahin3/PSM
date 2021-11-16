@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { ServiceService } from 'src/app/services/service.service';
+import { Service } from '../model';
 
 @Component({
   selector: 'app-service-edit',
@@ -9,21 +12,34 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ServiceEditComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder) { }
-  serviceForm!: FormGroup;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, 
+    private serviceService: ServiceService, private dialogRef: MatDialog, private alertifyService: AlertifyService) { }
+  serviceEditForm!: FormGroup;
+  service:Service = new Service();
 
-  createserviceForm() {
-    this.serviceForm = this.formBuilder.group({
+  createserviceEditForm() {
+    this.serviceEditForm = this.formBuilder.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
     });
   }
   ngOnInit(): void {
-    this.createserviceForm();
-    this.serviceForm.patchValue({
+    this.createserviceEditForm();
+    this.serviceEditForm.patchValue({
       name:this.data.name,
-      description: this.data.weight
+      description: this.data.description
     });
   }
-
+  edit() {
+    if (this.serviceEditForm.valid)
+    {
+      this.service = Object.assign({}, this.serviceEditForm.value)
+    }
+    this.serviceService.update(this.data.id, this.service).subscribe(data => {
+      this.alertifyService.success(this.data.name + " Successfully changed !")
+      this.dialogRef.closeAll();
+    }, error => {
+      console.log(error + "Could not add service");
+    });
+  }
 }

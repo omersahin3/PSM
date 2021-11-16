@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
       if (this.roles[0] === 'ROLE_USER') {
         this.reloadAdminPage();
       }
-      // this.reloadPage();
     }, error => {
       this.errorMessage = error.error.message;
       this.isLoginFailed = true;

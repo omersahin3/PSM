@@ -19,8 +19,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     active: {
-      type: Sequelize.BOOLEAN
-    }
+      type: Sequelize.BOOLEAN, defaultValue: true
+    },
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
   });
 
   return User;
