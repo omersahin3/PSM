@@ -42,6 +42,7 @@ export class ServerEditComponent implements OnInit {
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Could not edit server");
+      this.alertifyService.success(" Could not edit server ")
     });
   }
 }

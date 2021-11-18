@@ -1,6 +1,7 @@
 <div class="service-detail">
     <div class="title">
-      <h2>Detail Service</h2>
+      <h2 *ngIf="green == true" class="green">Detail Service</h2>
+      <h2 *ngIf="green != true" class="red">Detail Service</h2>
       <button mat-button mat-dialog-close>
         <mat-icon class="icon">close</mat-icon>
       </button>
@@ -11,6 +12,14 @@
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Service Name</mat-label>
           <input matInput placeholder="Service Name" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Created Time</mat-label>
+          <input matInput placeholder="Service Name" formControlName="createdAt" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Updated Time</mat-label>
+          <input matInput placeholder="Service Name" formControlName="updatedAt" required>
         </mat-form-field>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Description</mat-label>

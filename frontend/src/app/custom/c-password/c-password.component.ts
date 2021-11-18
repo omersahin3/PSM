@@ -13,7 +13,7 @@ import { UserpassEdit, UserResponse } from '../model';
 })
 export class CPasswordComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private token: TokenStorageService,
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private tokenStorage: TokenStorageService,
     private alertifyService: AlertifyService, private dialogRef: MatDialog) { }
   cpasswordForm!: FormGroup;
   user:UserpassEdit = new UserpassEdit();
@@ -33,7 +33,7 @@ export class CPasswordComponent implements OnInit {
       new_password: '',
       confirm_new_password: '',
     });
-    this.currentUser = this.token.getUser();
+    this.currentUser = this.tokenStorage.getUser();
   }
   
   changePassword() {

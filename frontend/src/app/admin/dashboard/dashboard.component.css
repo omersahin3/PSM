@@ -2,7 +2,8 @@
 @import "../../../app/app.landscape.css" screen and (max-width: 767.98px);
 @import "../../../app/app.desktop.css" screen and (max-width: 1199.98px);
 .dashboard{
-    min-width: 203px;
+    min-width: 243px;
+    padding: 20px;
 }
 .dashboard h2{
     text-align: center;

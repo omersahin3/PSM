@@ -28,7 +28,9 @@
         </span>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Date Of Birth</mat-label>
-          <input type="date" matInput placeholder="Date Of Birth" formControlName="dateofbirth">
+          <input [matDatepicker]="dp" matInput placeholder="Date Of Birth" formControlName="dateofbirth">
+          <mat-datepicker-toggle matSuffix [for]="dp" style="color: blueviolet;"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
         </mat-form-field>
         <span *ngIf="profileForm.controls['dateofbirth'].invalid && (profileForm.controls['dateofbirth'].dirty || profileForm.controls['dateofbirth'].touched)" class="noValue">
           *Please enter your date of birth

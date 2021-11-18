@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ServicesComponent } from './services/services.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -51,6 +51,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule
   ],
-  exports: [RouterModule] // dışardan tanımlanmasını sağlanmış
+  exports: [RouterModule], // dışardan tanımlanmasını sağlanmış
+  providers: [DatePipe]
 })
 export class AdminModule {}

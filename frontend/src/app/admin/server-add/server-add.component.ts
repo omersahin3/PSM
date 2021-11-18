@@ -37,6 +37,7 @@ export class ServerAddComponent implements OnInit {
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Could not add server");
+      this.alertifyService.success(" Could not add server ")
     });
   }
 }

@@ -38,6 +38,7 @@ export class ServiceAddComponent implements OnInit {
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Could not add service");
+      this.alertifyService.success(" Could not add service ")
     });
   }
 }

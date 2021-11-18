@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,9 +15,9 @@ import { UserResponse, UserEdit } from '../model';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private token: TokenStorageService,
+  constructor(private formBuilder: FormBuilder, private tokenStorage: TokenStorageService,
     private userService:UserService, private alertifyService: AlertifyService, 
-    private dialogRef: MatDialog){ }
+    private dialogRef: MatDialog, private datePipe: DatePipe){ }
   profileForm!: FormGroup;
   editModeState: boolean = true;
   currentUser!: UserResponse;
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.currentUser = this.token.getUser();
+    this.currentUser = this.tokenStorage.getUser();
     this.createprofileForm();
     this.profileForm.patchValue({ username: this.currentUser.username })
     this.profileForm.patchValue({ email: this.currentUser.email })

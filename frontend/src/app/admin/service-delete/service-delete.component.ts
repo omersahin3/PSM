@@ -20,7 +20,7 @@ export class ServiceDeleteComponent implements OnInit {
       this.alertifyService.success(this.data.name + " Successfully deleted !")
       this.dialogRef.closeAll();
     }, error => {
-      console.log(error + "Could not delete server");
+      console.log(error + "Could not delete service");
       this.alertifyService.error(this.data.name + " Could not be deleted !")
     });
   }

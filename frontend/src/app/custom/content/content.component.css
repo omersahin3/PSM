@@ -3,7 +3,4 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    padding: 50px;
-    min-width: 680px;
-    /* min-width: 303px; FOR DASHBOARD */
 }

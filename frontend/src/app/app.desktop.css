@@ -3,3 +3,12 @@
         grid-template: repeat(6, 1fr) / repeat(2, 1fr) !important;
     }
 }
+.mat-header-cell{
+    font-size: 14px !important;
+}
+.mat-cell {
+    font-size: 12px !important;
+}
+.date{
+    font-size: 10px !important;
+}

@@ -16,12 +16,12 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggle: EventEmitter<any> = new EventEmitter();
 
-  constructor(private dialog: MatDialog, private token: TokenStorageService,
+  constructor(private dialog: MatDialog, private tokenStorage: TokenStorageService,
     private userService: UserService) { }
   currentUser: UserEdit = new UserEdit();
   
   ngOnInit(): void {
-    this.currentUser = this.token.getUser();
+    this.currentUser = this.tokenStorage.getUser();
   }
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(CPasswordComponent);
   }
   logout(): void {
-    this.token.signOut();
+    this.tokenStorage.signOut();
     this.reloadLoginPage();
   }
   reloadLoginPage(): void {
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
   refreshUser() {
     this.userService.get(this.currentUser.id).subscribe(data => {
       console.log(data)
-      this.token.saveUser(data);
+      this.tokenStorage.saveUser(data);
     }, error => {
       console.log(error + "USER could not be refreshed");
     });
