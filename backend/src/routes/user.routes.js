@@ -2,6 +2,7 @@ const { authJwt } = require("../middleware");
 const usercontroller = require("../controllers/user.controller");
 
 const userRouter = require('express').Router();
+
 userRouter.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Headers",
@@ -10,29 +11,21 @@ userRouter.use(function (req, res, next) {
   next();
 });
 
-userRouter.get("/all", usercontroller.allAccess);
-
-userRouter.get(
-  "/user",
-  [authJwt.verifyToken],
-  usercontroller.userBoard
+userRouter.put(
+  "/:id", 
+  [authJwt.verifyToken, authJwt.isAdmin], 
+  usercontroller.update
 );
-
 userRouter.get(
-  "/mod",
-  [authJwt.verifyToken, authJwt.isModerator],
-  usercontroller.moderatorBoard
+  "/:id", 
+  [authJwt.verifyToken, authJwt.isAdmin], 
+  usercontroller.findOne
 );
-
-userRouter.get(
-  "/admin",
-  [authJwt.verifyToken, authJwt.isAdmin],
-  usercontroller.adminBoard
+userRouter.put(
+  "/changepass/:id", 
+  [authJwt.verifyToken, authJwt.isAdmin], 
+  usercontroller.Changepass
 );
-
-userRouter.put("/:id", usercontroller.update);
-userRouter.get("/:id", usercontroller.findOne);
-userRouter.put("/changepass/:id", usercontroller.Changepass);
 
 module.exports = {
   userRouter

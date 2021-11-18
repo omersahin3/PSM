@@ -95,19 +95,9 @@
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
     color: #FFFFFF99 !important;
 }
-  
-::ng-deep .mat-focused .mat-form-field-label {
-    /*change color of label*/
-    color: rgb(0, 255, 34) !important;
-}
-  
 ::ng-deep .mat-form-field-underline {
     /*change color of underline*/
     background-color: #FFFFFF99 !important;
 } 
-  
-::ng-deep .mat-form-field-ripple {
-   /*change color of underline when focused*/
-   background-color: rgb(0, 255, 34) !important;
-}
+
 

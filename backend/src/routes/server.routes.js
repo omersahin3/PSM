@@ -3,13 +3,13 @@ const servers = require("../controllers/server.controller");
 
 const serverRouter = require('express').Router();
 
-serverRouter.post("/", servers.create);
-serverRouter.get("/", servers.findAll);
-serverRouter.get("/published", servers.findAllPublished);
-serverRouter.get("/:id", servers.findOne);
-serverRouter.put("/:id", servers.update);
-serverRouter.delete("/:id", servers.delete);
-serverRouter.delete("/", servers.deleteAll);
+serverRouter.post("/", [authJwt.verifyToken, authJwt.isAdmin], servers.create);
+serverRouter.get("/", [authJwt.verifyToken, authJwt.isAdmin], servers.findAll);
+serverRouter.get("/published", [authJwt.verifyToken, authJwt.isAdmin], servers.findAllPublished);
+serverRouter.get("/:id", [authJwt.verifyToken, authJwt.isAdmin], servers.findOne);
+serverRouter.put("/:id", [authJwt.verifyToken, authJwt.isAdmin], servers.update);
+serverRouter.delete("/:id", [authJwt.verifyToken, authJwt.isAdmin], servers.delete);
+serverRouter.delete("/", [authJwt.verifyToken, authJwt.isAdmin], servers.deleteAll);
 
 module.exports = {
   serverRouter

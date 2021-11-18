@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         panelClass: ["custom-style"], duration: 3000
       });
       this.roles = this.tokenStorage.getUser().roles;
-      if (this.roles[0] === 'ROLE_USER') {
+      if (this.roles[0] === 'ROLE_ADMIN') {
         this.reloadAdminPage();
       }
     }, error => {

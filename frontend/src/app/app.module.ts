@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginGuard } from './login/login.guard';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { LoginGuard } from './login/login.guard';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [LoginGuard],
+  providers: [LoginGuard,authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

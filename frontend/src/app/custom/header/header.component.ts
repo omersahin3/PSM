@@ -45,7 +45,6 @@ export class HeaderComponent implements OnInit {
 
   refreshUser() {
     this.userService.get(this.currentUser.id).subscribe(data => {
-      console.log(data)
       this.tokenStorage.saveUser(data);
     }, error => {
       console.log(error + "USER could not be refreshed");
