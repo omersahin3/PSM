@@ -20,26 +20,32 @@
 }
 .card {
     margin: 8px;
-    padding: 8px;
-    border-radius: 25px;
     background-color: #ffffff;
-    border:20px solid black;
+    border: 10px dashed  black;
+}
+.scrollbar{
+    max-height: 132px;
+    overflow-y: auto;
 }
 .card-items{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0px 8px;
 }
-.card:hover{
+/* .card:hover{
     margin-top: -5px;
     margin-bottom: -5px;
     width: 100%;
-}
+} */
 .card-items:hover{
     background-color: black;
     line-height: normal;
     color: white;
-    padding: 8px;
+    /* padding: 8px; */
+}
+.card h2{
+    padding: 8px 0px;
 }
 .card p{
     font-size: 17px;
@@ -53,4 +59,16 @@
 }
 .error{
     color: red;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+background: white;
+}
+::-webkit-scrollbar-thumb {
+background-color: #ff0000;
+border-radius: 10px;
 }
