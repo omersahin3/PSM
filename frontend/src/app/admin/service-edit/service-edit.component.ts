@@ -39,7 +39,7 @@ export class ServiceEditComponent implements OnInit {
       this.alertifyService.success(this.data.name + " Successfully changed !")
       this.dialogRef.closeAll();
     }, error => {
-      console.log(error + "Could not add service");
+      console.log(error + "Service could not be edited");
     });
   }
 }

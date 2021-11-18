@@ -30,6 +30,10 @@ userRouter.get(
   usercontroller.adminBoard
 );
 
+userRouter.put("/:id", usercontroller.update);
+userRouter.get("/:id", usercontroller.findOne);
+userRouter.put("/changepass/:id", usercontroller.Changepass);
+
 module.exports = {
   userRouter
 }

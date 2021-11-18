@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
-import { getUser } from 'src/app/login/model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 import { CPasswordComponent } from '../c-password/c-password.component';
+import { UserEdit } from '../model';
 import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
@@ -15,12 +16,12 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggle: EventEmitter<any> = new EventEmitter();
 
-  constructor(private dialog: MatDialog, private token: TokenStorageService, private tokenStorageService: TokenStorageService) { }
-  currentUser: getUser = new getUser();
+  constructor(private dialog: MatDialog, private token: TokenStorageService,
+    private userService: UserService) { }
+  currentUser: UserEdit = new UserEdit();
   
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser)
   }
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
@@ -28,23 +29,26 @@ export class HeaderComponent implements OnInit {
     this.toggle.emit(null);
   }
   openProfile(){
-    let dialogRef = this.dialog.open(ProfileComponent, {data: {name: 'Vishwas',lname: 'a',fname: 'b', email:'a@gmail.com',phone:'05555555555'}});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog Result: ${result}`);
-    })
+    this.dialog.open(ProfileComponent).afterClosed().subscribe(() => { this.refreshUser(); });
   }
   changePassword(){
-    let dialogRef = this.dialog.open(CPasswordComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog Result: ${result}`);
-    })
+    this.dialog.open(CPasswordComponent);
   }
   logout(): void {
-    this.tokenStorageService.signOut();
+    this.token.signOut();
     this.reloadLoginPage();
   }
   reloadLoginPage(): void {
     let path = window.location.pathname = '/login/';
     window.location.assign(path);
+  }
+
+  refreshUser() {
+    this.userService.get(this.currentUser.id).subscribe(data => {
+      console.log(data)
+      this.token.saveUser(data);
+    }, error => {
+      console.log(error + "USER could not be refreshed");
+    });
   }
 }

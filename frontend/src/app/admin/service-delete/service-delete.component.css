@@ -26,5 +26,8 @@
   padding: 0px !important;
   overflow: hidden !important;
 }
-
+.mat-stroked-button.mat-purple {
+  border-color: #9A6AEF;
+  color: #9A6AEF;
+} 
 

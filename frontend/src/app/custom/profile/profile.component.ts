@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { getUser } from 'src/app/login/model';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
+import { UserResponse, UserEdit } from '../model';
 
 
 @Component({
@@ -11,36 +14,50 @@ import { getUser } from 'src/app/login/model';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private formBuilder: FormBuilder){ }
+  constructor(private formBuilder: FormBuilder, private token: TokenStorageService,
+    private userService:UserService, private alertifyService: AlertifyService, 
+    private dialogRef: MatDialog){ }
   profileForm!: FormGroup;
   editModeState: boolean = true;
-
+  currentUser!: UserResponse;
+  user:UserEdit = new UserEdit();
   createprofileForm() {
     this.profileForm = this.formBuilder.group({
-      name: [{ value: '', disabled: this.editModeState}, Validators.required],
-      fname: [{ value: '', disabled: this.editModeState}, Validators.required],
-      lname: [{ value: '', disabled: this.editModeState}, Validators.required],
+      username: [{ value: '', disabled: this.editModeState}, Validators.required],
+      email: [{ value: '', disabled: this.editModeState}, Validators.required],
       phone: [{ value: '', disabled: this.editModeState}, Validators.required],
-      email: [{ value: '', disabled: this.editModeState}, Validators.required]
+      dateofbirth: [{ value: '', disabled: this.editModeState}, Validators.required],
+      adress: [{ value: '', disabled: this.editModeState}, Validators.required]
     });
   }
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
     this.createprofileForm();
-    this.profileForm.patchValue({ name: this.data.name })
-    this.profileForm.patchValue({ fname: this.data.fname })
-    this.profileForm.patchValue({ lname: this.data.lname })
-    this.profileForm.patchValue({ phone: this.data.phone })
-    this.profileForm.patchValue({ email:  this.data.email })
+    this.profileForm.patchValue({ username: this.currentUser.username })
+    this.profileForm.patchValue({ email: this.currentUser.email })
+    this.profileForm.patchValue({ phone: this.currentUser.phone ? this.currentUser.phone : 'Not entered yet'})
+    this.profileForm.patchValue({ dateofbirth: this.currentUser.dateofbirth })
+    this.profileForm.patchValue({ adress:  this.currentUser.adress ? this.currentUser.adress : 'Not entered yet'})
   }
   editMode() {
     this.editModeState = false;
-    this.profileForm.controls['name'].disable();
-    this.profileForm.controls['fname'].enable();
-    this.profileForm.controls['lname'].enable();
+    this.profileForm.controls['username'].disable();
+    this.profileForm.controls['email'].enable();
     this.profileForm.controls['phone'].enable();
-    this.profileForm.controls['email'].disable();
+    this.profileForm.controls['dateofbirth'].enable();
+    this.profileForm.controls['adress'].enable();
   }
   updateProfile() {
+    if (this.profileForm.valid)
+    {
+      this.user = Object.assign({}, this.profileForm.value)
+    }
+    this.userService.update(this.currentUser.id, this.user).subscribe(data => {
+      this.alertifyService.success(this.currentUser.username + " Your profile is set !")
+      this.dialogRef.closeAll();
+    }, error => {
+      console.log(error + "Your profile could not be edited");
+    });
   }
-
+  
 }

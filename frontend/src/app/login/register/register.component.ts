@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from '../model';
+import { postUser } from '../model';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formbuilder:FormBuilder,private authService: AuthService, private snackbar: MatSnackBar) { }
   registerForm!:FormGroup;
-  user:User = new User();
+  user:postUser = new postUser();
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';

@@ -27,4 +27,16 @@ export class UserService {
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${API_URL}/${id}`, data);
+  }
+
+  get(id: any): Observable<any> {
+    return this.http.get(`${API_URL}/${id}`);
+  }
+
+  Changepass(id: any, data: any): Observable<any> {
+    return this.http.put(`${API_URL}/changepass/${id}`, data);
+  }
 }

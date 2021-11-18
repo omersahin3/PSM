@@ -63,7 +63,6 @@ exports.signin = (req, res) => {
         req.body.password,
         user.password
       );
-
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
@@ -84,6 +83,10 @@ exports.signin = (req, res) => {
           id: user.id,
           username: user.username,
           email: user.email,
+          password: user.password,
+          phone: user.phone,
+          dateofbirth: user.dateofbirth,
+          adress: user.adress,
           roles: authorities,
           accessToken: token
         });

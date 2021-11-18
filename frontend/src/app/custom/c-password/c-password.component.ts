@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
+import { UserpassEdit, UserResponse } from '../model';
 
 @Component({
   selector: 'app-c-password',
@@ -8,9 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CPasswordComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private token: TokenStorageService,
+    private alertifyService: AlertifyService, private dialogRef: MatDialog) { }
   cpasswordForm!: FormGroup;
-
+  user:UserpassEdit = new UserpassEdit();
+  currentUser!: UserResponse;
+  
   createcpasswordForm() {
     this.cpasswordForm = this.formBuilder.group({
       current_password: ["", [Validators.required,Validators.minLength(6)]],
@@ -25,6 +33,31 @@ export class CPasswordComponent implements OnInit {
       new_password: '',
       confirm_new_password: '',
     });
+    this.currentUser = this.token.getUser();
   }
-
+  
+  changePassword() {
+    if (this.cpasswordForm.valid)
+    {
+      this.user = Object.assign({}, this.cpasswordForm.value)
+    }
+    const current_password = this.user.current_password;
+    const new_password = this.user.new_password;
+    const confirm_new_password = this.user.confirm_new_password;
+    if( current_password != new_password)
+    {
+      if (confirm_new_password === new_password) {
+        this.userService.Changepass(this.currentUser.id, this.user).subscribe(data => {
+          this.alertifyService.success(this.currentUser.username + " Your password has been successfully changed !")
+          this.dialogRef.closeAll();
+        }, error => {
+          console.log(error + "Could not change password");
+          this.alertifyService.error(" Could not change password ");
+        });
+      };
+    }
+    else{
+      this.alertifyService.warning(" you entered the same password ");
+    }
+  }
 }
