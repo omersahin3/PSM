@@ -58,3 +58,15 @@
     border-color: #9A6AEF;
     color: #9A6AEF;
 }
+/* MAT-SELECT */
+  
+  ::ng-deep .mat-select-panel {
+    background: #151319;
+  }
+  .mat-select-value{
+    color: white;
+  }
+  
+  .mat-option{
+    color: #D4D4D4 !important;
+  }

@@ -9,14 +9,11 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-  // Validate request
   if (!req.body.username) {
-    res.status(400).send({
-      message: "Username can not be empty!"
-    });
+    res.status(400).send({ message: "Username can not be empty!"}); 
     return;
   }
-  // Save User to Database
+
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -24,11 +21,14 @@ exports.signup = (req, res) => {
   })
     .then(user => {
       if (req.body.roles) {
-        Role.findAll({
+        Role.findOne({
           where: {
-            name: { [Op.or]: req.body.roles }
+            name: { [Op.or]: [req.body.roles] }
           }
         }).then(roles => {
+          if (!roles) {
+            return res.status(404).send({ message: "Roles Not found." });
+          }
           user.setRoles(roles).then(() => {
             res.send({ message: "User registered successfully!" });
           });

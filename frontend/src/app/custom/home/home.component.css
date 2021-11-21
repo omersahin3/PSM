@@ -12,9 +12,10 @@
     width: 100%;
     min-width: 300px;
     background-color: #18181B;
+    height: 9.8vh;
 }
 .b{
-    height: 100%;
+    height: calc(100vh - 9.8vh);
     display: flex;
     flex-direction: row;
     min-width: 300px;

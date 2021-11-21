@@ -33,7 +33,7 @@ export class ServerAddComponent implements OnInit {
       this.server = Object.assign({}, this.serverAddForm.value)
     }
     this.serverService.create(this.server).subscribe(data => {
-      this.alertifyService.success(data.dns_name + " Successfully added !")
+      this.alertifyService.success(data.data.dns_name + " Successfully added !")
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Could not add server");

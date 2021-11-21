@@ -16,23 +16,7 @@ exports.create = (req, res) => {
     ip_adress: req.body.ip_adress,
   })
     .then(server => {
-      if (req.body.service) {
-        Role.findAll({
-          where: {
-            name: { [Op.or]: req.body.service }
-          }
-        }).then(service => {
-          // server.setServices(service).then(() => {
-          //   res.send({ message: "Successfully added server !" });kampus.ankageo.com
-          // });
-          res.send(server);
-        });
-      } else {
-        //   server.setServices([1]).then(() => {
-        //     res.send({ message: "Successfully added server !" });
-        //   });
-        res.send(server);
-      }
+      res.send({ data: server , message: "Successfully added server !" });
     })
     .catch(err => {
       res.status(500).send({

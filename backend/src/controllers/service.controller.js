@@ -1,5 +1,6 @@
 const db = require("../models");
 const Service = db.service;
+const Server = db.server;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -9,28 +10,26 @@ exports.create = (req, res) => {
     });
     return;
   }
-
   Service.create({
     name: req.body.name,
     description: req.body.description,
   })
     .then(service => {
       if (req.body.server) {
-        Role.findAll({
+        Server.findOne({
           where: {
-            name: { [Op.or]: req.body.server }
+            dns_name: { [Op.or]: [req.body.server] }
           }
         }).then(server => {
+          if (!server) {
+            return res.status(404).send({ message: "Server Not found." });
+          }
           service.setServers(server).then(() => {
-            // res.send({ message: "Successfully added service !" });
-            res.send(service);
+            res.send({ data: service , message: "Successfully added service !" });
           });
         });
       } else {
-        //   service.setServers([1]).then(() => {
-        //     res.send({ message: "Successfully added service !" });
-        //   });
-        res.send(service);
+        res.send({ data: service , message: "Successfully added service !" });
       }
     })
     .catch(err => {

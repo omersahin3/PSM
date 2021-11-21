@@ -3,7 +3,7 @@
 @import "../../../app/app.desktop.css" screen and (max-width: 1199.98px);
 .dashboard{
     min-width: 243px;
-    padding: 20px;
+    padding: 50px 20px 20px 20px;
 }
 .dashboard h2{
     text-align: center;
@@ -16,12 +16,13 @@
 .cards{
     display: grid;
     width: 100%;
-    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
 }
 .card {
     margin: 8px;
-    background-color: #ffffff;
-    border: 10px dashed  black;
+    background-color: #0E0E10;
+    border: 10px double white;
+    border-radius: 25px;
 }
 .scrollbar{
     max-height: 132px;
@@ -39,19 +40,26 @@
     width: 100%;
 } */
 .card-items:hover{
-    background-color: black;
+    background-color: #2C2C30;
     line-height: normal;
-    color: white;
-    /* padding: 8px; */
+    color: black;
+}
+.card-items:last-child:hover{
+    background-color: #2C2C30;
+    line-height: normal;
+    color: black;
+    border-radius: 0px 0px 15px 15px;
 }
 .card h2{
     padding: 8px 0px;
+    color: white;
 }
-.card p{
+.card-items p{
     font-size: 17px;
     display: inline-block;
     line-height: normal !important;
     text-align: center;
+    color: white;
 }
 .success{
     color: greenyellow;
@@ -63,12 +71,9 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar{
-    width: 15px;
-}
-::-webkit-scrollbar-track {
-background: white;
+    width: 7px;
 }
 ::-webkit-scrollbar-thumb {
-background-color: #ff0000;
-border-radius: 10px;
+    background-color: black;
+    border-radius: 50%;
 }
