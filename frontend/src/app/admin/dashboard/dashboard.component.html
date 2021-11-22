@@ -3,24 +3,25 @@
         <h2>Dashboard</h2>
     </div>
     <div class="cards">
-        <div class="card" *ngFor="let service of services">
-            <h2>Beyoğlu Demo</h2>
+        <div class="card" *ngFor="let server of servers">
+            <h2>{{server.dns_name}}</h2>
             <div class="scrollbar">
-                <div class="card-items">
-                    <p>{{service.name}}</p>
-                    <mat-icon class="success" *ngIf="service.status == true">check_circle_outline</mat-icon>
-                    <mat-icon class="error" *ngIf="service.status != true">error</mat-icon>
+                <div *ngFor="let service of server.services">
+                    <div class="card-items" *ngIf="service.status != true">
+                        <p>{{service.name}}</p>    
+                        <mat-icon class="success" *ngIf="service.status == true">check_circle_outline</mat-icon>
+                        <mat-icon class="error" *ngIf="service.status != true">error</mat-icon> 
+                    </div>
                 </div>
-                <div class="card-items">
-                    <p>GeoServer</p><mat-icon class="success">check_circle_outline</mat-icon>
-                </div>
-                <div class="card-items">
-                    <p>PanAPI</p><mat-icon class="success">check_circle_outline</mat-icon>
-                </div>
-                <div class="card-items">
-                    <p>Backend</p><mat-icon class="error">error</mat-icon>
+                <div *ngFor="let service of server.services">
+                    <div class="card-items" *ngIf="service.status == true">
+                        <p>{{service.name}}</p>    
+                        <mat-icon class="success" *ngIf="service.status == true">check_circle_outline</mat-icon>
+                        <mat-icon class="error" *ngIf="service.status != true">error</mat-icon> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 </div>

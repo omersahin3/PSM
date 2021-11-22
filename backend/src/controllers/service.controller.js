@@ -4,12 +4,15 @@ const Server = db.server;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  if (!req.body.name) {
+  // this code returns if the server does not exist
+  if (!req.body.name || !req.body.server) {
     res.status(400).send({
-      message: "Service name can not be empty!"
+      message: "name,description and server can not be empty!"
     });
     return;
   }
+
+  // this code is adding service without server
   Service.create({
     name: req.body.name,
     description: req.body.description,
@@ -41,10 +44,13 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  const name = req.query.name;
-  var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
 
-  Service.findAll({ where: condition })
+  Service.findAll({ 
+    include: [{
+      model: Server,
+      as: "servers"
+    }]
+   })
     .then(data => {
       res.send(data);
     })
@@ -136,19 +142,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all Services."
-      });
-    });
-};
-
-exports.findAllPublished = (req, res) => {
-  Service.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Services."
       });
     });
 };

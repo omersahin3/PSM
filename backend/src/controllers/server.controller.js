@@ -1,5 +1,6 @@
 const db = require("../models");
 const Server = db.server;
+const Service = db.service;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -27,10 +28,13 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  const name = req.query.name;
-  var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
 
-  Server.findAll({ where: condition })
+  Server.findAll({     
+    include: [{
+      model: Service,
+      as: "services"
+    }] 
+  })
     .then(data => {
       res.send(data);
     })
@@ -126,15 +130,3 @@ exports.deleteAll = (req, res) => {
     });
 };
 
-exports.findAllPublished = (req, res) => {
-  Server.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Servers."
-      });
-    });
-};

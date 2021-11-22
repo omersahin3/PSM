@@ -16,16 +16,18 @@
 .cards{
     display: grid;
     width: 100%;
-    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
 }
 .card {
+    background-color: #18181B;
     margin: 8px;
-    background-color: #0E0E10;
     border: 10px double white;
     border-radius: 25px;
 }
 .scrollbar{
-    max-height: 132px;
+    background-color: #0E0E10;
+    max-height: 130px;
+    min-height: 130px;
     overflow-y: auto;
 }
 .card-items{
@@ -34,17 +36,7 @@
     justify-content: space-between;
     padding: 0px 8px;
 }
-/* .card:hover{
-    margin-top: -5px;
-    margin-bottom: -5px;
-    width: 100%;
-} */
 .card-items:hover{
-    background-color: #2C2C30;
-    line-height: normal;
-    color: black;
-}
-.card-items:last-child:hover{
     background-color: #2C2C30;
     line-height: normal;
     color: black;
@@ -71,7 +63,7 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar{
-    width: 7px;
+    width: 0px;
 }
 ::-webkit-scrollbar-thumb {
     background-color: black;

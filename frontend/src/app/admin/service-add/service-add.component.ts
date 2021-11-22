@@ -34,7 +34,6 @@ export class ServiceAddComponent implements OnInit {
   
   add() {
     this.service = Object.assign({}, this.serviceAddForm.value) 
-    console.log(this.service);
     this.serviceService.create(this.service).subscribe(data => {
       this.alertifyService.success(data.data.name + " Successfully added !")
       this.dialogRef.closeAll();

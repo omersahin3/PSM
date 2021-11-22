@@ -18,7 +18,6 @@
         <mat-form-field appearance="fill">
           <mat-label>Server</mat-label>
           <mat-select formControlName="server" [(value)]="selectedServer">
-            <mat-option></mat-option>
             <mat-option [value]="option.dns_name" *ngFor="let option of servers">{{ option .dns_name }}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -34,7 +33,7 @@
     <div mat-dialog-actions>
       <div class="buttons">
         <button mat-stroked-button mat-dialog-close mat-dialog-close="false" class="cancel" color="purple">Cancel</button>
-        <button mat-raised-button color="primary" [disabled]="serviceAddForm.controls['name'].invalid || serviceAddForm.controls['description'].invalid" (click)="add()">Save</button>
+        <button mat-raised-button color="primary" [disabled]="serviceAddForm.invalid" (click)="add()">Save</button>
       </div>
     </div>
   </div>

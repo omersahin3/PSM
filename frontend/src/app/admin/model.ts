@@ -12,7 +12,8 @@ export interface ServerResponse {
   description: string,
   ip_adress: string,
   createdAt: string,
-  updatedAt: string
+  updatedAt: string,
+  services: Array<any>;
 }
 export class Service{ 
   id!: number;

@@ -5,7 +5,6 @@ const serverRouter = require('express').Router();
 
 serverRouter.post("/", [authJwt.verifyToken, authJwt.isAdmin], servers.create);
 serverRouter.get("/", [authJwt.verifyToken, authJwt.isAdmin], servers.findAll);
-serverRouter.get("/published", [authJwt.verifyToken, authJwt.isAdmin], servers.findAllPublished);
 serverRouter.get("/:id", [authJwt.verifyToken, authJwt.isAdmin], servers.findOne);
 serverRouter.put("/:id", [authJwt.verifyToken, authJwt.isAdmin], servers.update);
 serverRouter.delete("/:id", [authJwt.verifyToken, authJwt.isAdmin], servers.delete);

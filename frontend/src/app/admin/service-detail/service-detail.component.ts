@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
+import { ServiceService } from 'src/app/services/service.service';
 @Component({
   selector: 'app-service-detail',
   templateUrl: './service-detail.component.html',
@@ -9,15 +10,19 @@ import { DatePipe } from '@angular/common';
 })
 export class ServiceDetailComponent implements OnInit {
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private datePipe: DatePipe) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, 
+    private datePipe: DatePipe, private serviceService: ServiceService) { }
+
   serviceDetailForm!: FormGroup;
   green = this.data.status;
+
   createserviceDetailForm() {
     this.serviceDetailForm = this.formBuilder.group({
       name: [{ value: '', disabled: true}, Validators.required],
       description: [{ value: '', disabled: true}, Validators.required],
       createdAt: [{ value: '', disabled: true}, Validators.required],
       updatedAt: [{ value: '', disabled: true}, Validators.required],
+      server: [{ value: '', disabled: true}, Validators.required],
     });
   }
   ngOnInit(): void {
@@ -26,9 +31,9 @@ export class ServiceDetailComponent implements OnInit {
       name:this.data.name,
       description: this.data.description,
       createdAt: this.datePipe.transform(this.data.createdAt, 'dd/MM/yyyy hh:mm'),
-      updatedAt: this.datePipe.transform(this.data.updatedAt, 'dd/MM/yyyy hh:mm')
+      updatedAt: this.datePipe.transform(this.data.updatedAt, 'dd/MM/yyyy hh:mm'),
+      server: this.data.servers.length == 0 ? 'No Server' : this.data.servers[0].dns_name,
     });
   }
-
 }
 
