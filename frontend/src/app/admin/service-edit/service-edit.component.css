@@ -1,60 +1,93 @@
-.service-edit .title{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.service-edit .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .service-edit .title h2 {
-    margin: 16px;
+  margin: 16px;
 }
 .service-edit .title .icon {
-    font-size: 24px;
-    color: #4B4B4B;
-    margin: 16px;
+  font-size: 24px;
+  color: #4b4b4b;
+  margin: 16px;
 }
 .service-edit .body form {
-    display: flex;
-    flex-direction: column;
-    margin: 36px 36px 0px 36px;
+  display: flex;
+  flex-direction: column;
+  margin: 36px 36px 0px 36px;
 }
-.mat-form-field{
-    width: 350px;
-    caret-color: #D4D4D4;
+.mat-form-field {
+  width: 350px;
+  caret-color: #d4d4d4;
 }
 
 .service-edit .buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin: 8px 36px 30px 0px;
-    width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 36px 30px 0px;
+  width: 100%;
 }
 .buttons .cancel {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 .service-edit .noValue {
-    color: red;
-    font-size: small;
-    margin-top:-15px;
+  color: red;
+  font-size: small;
+  margin-top: -15px;
 }
 .service-edit .mat-input-element:disabled,
-.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select.mat-form-field-disabled
+  .mat-form-field-infix::after {
   color: gray;
 }
 ::ng-deep .custom-style-warn .mat-simple-snackbar-action {
-    color: white !important;
+  color: white !important;
 }
-::ng-deep .mat-dialog-container{
-    background-color: #151319;
-    color: #D4D4D4;
-    padding: 0px !important;
-    overflow: hidden !important;
+::ng-deep .mat-dialog-container {
+  background-color: #151319;
+  color: #d4d4d4;
+  padding: 0px !important;
+  overflow: hidden !important;
 }
 ::ng-deep .mat-form-field span.mat-form-field-label-wrapper label {
-    color:#D4D4D4 !important;
+  color: #d4d4d4 !important;
 }
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: #00000072 !important; 
+  background-color: #00000072 !important;
 }
 .mat-stroked-button.mat-purple {
-    border-color: #9A6AEF;
-    color: #9A6AEF;
+  border-color: #9a6aef;
+  color: #9a6aef;
 }
+/* MAT-SELECT */
+
+::ng-deep .mat-select-panel {
+  background: #151319;
+}
+.mat-select-value {
+  color: white;
+}
+
+.mat-option {
+  color: #d4d4d4 !important;
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ff0000;
+  border-radius: 10px;
+  border: 3px solid #000000;
+}
+
+::ng-deep .mat-select-panel-wrap{
+    overflow: hidden !important;
+}
+::ng-deep .mat-select-panel {
+
+    overflow-y: auto !important;
+ }

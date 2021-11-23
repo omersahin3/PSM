@@ -19,7 +19,6 @@ verifyToken = (req, res, next) => {
       });
     }
     req.userId = decoded.id;
-    console.log(token);
     next();
   });
 };
@@ -51,7 +50,6 @@ isModerator = (req, res, next) => {
           return;
         }
       }
-
       res.status(403).send({
         message: "Require Moderator Role!"
       });

@@ -29,7 +29,7 @@ export class ServiceAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createserviceAddForm();
-    this.retrieveServices();
+    this.retrieveServers();
   }
   
   add() {
@@ -42,7 +42,7 @@ export class ServiceAddComponent implements OnInit {
       this.alertifyService.success(" Could not add service ")
     });
   }
-  retrieveServices(): void {
+  retrieveServers(): void {
     this.serverService.getAll().subscribe(data => {
       this.servers = data;
     }, error => {

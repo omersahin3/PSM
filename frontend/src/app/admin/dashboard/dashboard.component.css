@@ -1,71 +1,71 @@
-@import "../../../app/app.tablet.css" screen and  (max-width: 991.98px);
+@import "../../../app/app.tablet.css" screen and (max-width: 991.98px);
 @import "../../../app/app.landscape.css" screen and (max-width: 767.98px);
 @import "../../../app/app.desktop.css" screen and (max-width: 1199.98px);
-.dashboard{
-    min-width: 243px;
-    padding: 50px 20px 20px 20px;
+.dashboard {
+  min-width: 243px;
+  padding: 50px 20px 20px 20px;
 }
-.dashboard h2{
-    text-align: center;
-    width: 100%;
+.dashboard h2 {
+  text-align: center;
+  width: 100%;
 }
-.title h2{
-    color: #D4D4D4;
-    font-size: 32px;
+.title h2 {
+  color: #d4d4d4;
+  font-size: 32px;
 }
-.cards{
-    display: grid;
-    width: 100%;
-    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+.cards {
+  display: grid;
+  width: 100%;
+  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
 }
 .card {
-    background-color: #18181B;
-    margin: 8px;
-    border: 10px double white;
-    border-radius: 25px;
+  background-color: #18181b;
+  margin: 8px;
+  border: 10px double white;
+  border-radius: 25px;
 }
-.scrollbar{
-    background-color: #0E0E10;
-    max-height: 130px;
-    min-height: 130px;
-    overflow-y: auto;
+.scrollbar {
+  background-color: #0e0e10;
+  max-height: 130px;
+  min-height: 130px;
+  overflow-y: auto;
 }
-.card-items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 8px;
+.card-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 8px;
 }
-.card-items:hover{
-    background-color: #2C2C30;
-    line-height: normal;
-    color: black;
-    border-radius: 0px 0px 15px 15px;
+.card-items:hover {
+  background-color: #2c2c30;
+  line-height: normal;
+  color: black;
+  border-radius: 0px 0px 15px 15px;
 }
-.card h2{
-    padding: 8px 0px;
-    color: white;
+.card h2 {
+  padding: 8px 0px;
+  color: white;
 }
-.card-items p{
-    font-size: 17px;
-    display: inline-block;
-    line-height: normal !important;
-    text-align: center;
-    color: white;
+.card-items p {
+  font-size: 17px;
+  display: inline-block;
+  line-height: normal !important;
+  text-align: center;
+  color: white;
 }
-.success{
-    color: greenyellow;
-    display: inline-block;
+.success {
+  color: greenyellow;
+  display: inline-block;
 }
-.error{
-    color: red;
+.error {
+  color: red;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar{
-    width: 0px;
+::-webkit-scrollbar {
+  width: 0px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 50%;
+  background-color: black;
+  border-radius: 50%;
 }

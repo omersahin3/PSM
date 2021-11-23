@@ -90,9 +90,27 @@ exports.update = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "Service was updated successfully."
-        });
+        if (req.body.server) {
+          Server.findOne({
+            where: {
+              dns_name: { [Op.or]: [req.body.server] }
+            }
+          }).then(server => {
+            if (!server) {
+              return res.status(404).send({ message: "Server Not found." });
+            }
+            Service.findOne({
+              where: {
+                id: { [Op.or]: [id] }
+              }
+            }).then(service => {
+              // We set the server line to the service line
+              service.setServers(server).then(() => {
+                res.send({ message: "Service was updated successfully." });
+              });
+            });
+          });
+        }
       } else {
         res.send({
           message: `Cannot update Service with id=${id}. Maybe Service was not found or req.body is empty!`
