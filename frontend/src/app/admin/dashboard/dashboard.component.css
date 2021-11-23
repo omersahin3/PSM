@@ -60,7 +60,6 @@
 .error {
   color: red;
 }
-
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 0px;

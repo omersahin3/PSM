@@ -1,5 +1,6 @@
 @import "~alertifyjs/build/css/alertify.min.css";
 @import "~alertifyjs/build/css/themes/bootstrap.min.css";
+@import "psm-theme.css";
 *{
     box-sizing: border-box;
     margin: 0;

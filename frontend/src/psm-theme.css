@@ -1,0 +1,56 @@
+/* MAT-DİALOG  */
+.custom-style-warn .mat-simple-snackbar-action {
+    color: white !important;
+}
+.mat-dialog-container{
+    background-color: #151319;
+    color: #D4D4D4;
+    padding: 0px !important;
+    overflow: hidden !important;
+}
+.mat-form-field span.mat-form-field-label-wrapper label {
+    color:#D4D4D4 !important;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #00000072 !important; 
+}
+/* MAT-SELECT */
+.mat-select-value{
+    color: white;
+}
+.mat-select-panel {
+    background: #151319;
+}
+.mat-option{
+    color: #D4D4D4 !important;
+}
+.mat-select-panel-wrap{
+    overflow: hidden !important;
+}
+/*  FORM FİELD */
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: #FFFFFF99 !important;
+}
+.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #FFFFFF99 !important;
+} 
+/* MAT-MENU */
+.mat-menu-content {
+    background-color: #18181B;
+}
+/* SNACKBAR */
+.custom-style {
+    background-color:#6AB795;
+    color: white !important; 
+}
+.custom-style .mat-simple-snackbar-action {
+    color: white !important;
+}
+.custom-style-warn {
+    background-color: #F83131;
+    color: white !important;
+}
+.custom-style-warn .mat-simple-snackbar-action {
+    color: white !important;
+}

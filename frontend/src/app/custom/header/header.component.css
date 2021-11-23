@@ -12,6 +12,3 @@ span {
     margin: 0 5px;
     color: whitesmoke;
 }
-::ng-deep .mat-menu-content {
-    background-color: #18181B;
-}

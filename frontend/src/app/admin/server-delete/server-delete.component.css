@@ -19,13 +19,6 @@
 .buttons .cancel {
   margin-right: 20px;
 }
-
-::ng-deep .mat-dialog-container{
-  background-color: #151319;
-  color: #D4D4D4;
-  padding: 0px !important;
-  overflow: hidden !important;
-}
 .mat-stroked-button.mat-purple {
   border-color: #9A6AEF;
   color: #9A6AEF;

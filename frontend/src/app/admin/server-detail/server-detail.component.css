@@ -27,19 +27,4 @@
 .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
   color: gray;
 }
-::ng-deep .custom-style-warn .mat-simple-snackbar-action {
-    color: white !important;
-}
-::ng-deep .mat-dialog-container{
-    background-color: #151319;
-    color: #D4D4D4;
-    padding: 0px !important;
-    overflow: hidden !important;
-}
-::ng-deep .mat-form-field span.mat-form-field-label-wrapper label {
-    color:#D4D4D4 !important;
-}
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: #00000072 !important; 
-}
 

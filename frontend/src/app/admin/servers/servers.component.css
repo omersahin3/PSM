@@ -73,9 +73,6 @@
 .click-row-z8-is-clicked {
     font-weight: bold;
 }
-::ng-deep .mat-select-value{
-    color: white;
-}
 .mat-paginator{
     font-size: 14px;
     color: #d4d4d4;  
@@ -91,13 +88,6 @@
     color: #FFFFFF99;
     cursor: pointer;
 }
-/*  FORM FİELD */
-::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
-    color: #FFFFFF99 !important;
-}
-::ng-deep .mat-form-field-underline {
-    /*change color of underline*/
-    background-color: #FFFFFF99 !important;
-} 
+
 
 

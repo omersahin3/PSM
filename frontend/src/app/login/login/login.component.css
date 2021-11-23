@@ -60,18 +60,3 @@
 .noValue span{
     color: red !important;
 }
-/* SNACKBAR */
-::ng-deep .custom-style {
-    background-color:#6AB795;
-    color: white !important; 
-}
-::ng-deep .custom-style .mat-simple-snackbar-action {
-    color: white !important;
-}
-::ng-deep .custom-style-warn {
-    background-color: #F83131;
-    color: white !important;
-}
-::ng-deep .custom-style-warn .mat-simple-snackbar-action {
-    color: white !important;
-}

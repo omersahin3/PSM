@@ -40,36 +40,9 @@
   .mat-form-field-infix::after {
   color: gray;
 }
-::ng-deep .custom-style-warn .mat-simple-snackbar-action {
-  color: white !important;
-}
-::ng-deep .mat-dialog-container {
-  background-color: #151319;
-  color: #d4d4d4;
-  padding: 0px !important;
-  overflow: hidden !important;
-}
-::ng-deep .mat-form-field span.mat-form-field-label-wrapper label {
-  color: #d4d4d4 !important;
-}
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: #00000072 !important;
-}
 .mat-stroked-button.mat-purple {
   border-color: #9a6aef;
   color: #9a6aef;
-}
-/* MAT-SELECT */
-
-::ng-deep .mat-select-panel {
-  background: #151319;
-}
-.mat-select-value {
-  color: white;
-}
-
-.mat-option {
-  color: #d4d4d4 !important;
 }
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -84,10 +57,3 @@
   border: 3px solid #000000;
 }
 
-::ng-deep .mat-select-panel-wrap{
-    overflow: hidden !important;
-}
-::ng-deep .mat-select-panel {
-
-    overflow-y: auto !important;
- }
