@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   }
   retrieveServices(): void {
     this.serverService.getAll().subscribe(data => {
+      console.log(data);
       this.servers = data;
     }, error => {
       console.log(error + "Server Error");

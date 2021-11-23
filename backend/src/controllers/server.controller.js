@@ -33,7 +33,8 @@ exports.findAll = (req, res) => {
     include: [{
       model: Service,
       as: "services"
-    }] 
+    }],
+    order: [['id' , 'ASC']]
   })
     .then(data => {
       res.send(data);
