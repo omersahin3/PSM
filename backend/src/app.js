@@ -4,6 +4,7 @@ const { authRouter } = require("./routes/auth.routes");
 const { userRouter } = require("./routes/user.routes");
 const { serviceRouter } = require("./routes/service.routes");
 const { serverRouter } = require("./routes/server.routes");
+const { serverServiceRouter } = require("./routes/server_service.routes");
 const app = express();
 
 var corsOptions = {
@@ -35,6 +36,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/service", serviceRouter);
 app.use("/api/server", serverRouter);
+app.use("/api/serverservice", serverServiceRouter);
 
 app.use((err, req, res, next) => {
   // console.log(err);
@@ -43,6 +45,9 @@ app.use((err, req, res, next) => {
     //stack: err.stack
   });
 });
+
+const intervalFunc = require("./logs");
+setInterval(intervalFunc, 300000);
 
 module.exports = {
   app,

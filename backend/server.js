@@ -9,7 +9,6 @@ app.listen(PORT, () => {
 
 const http = require('http');
 const db = require("./src/models");
-const intervalFunc = require("./logs");
 const ServerService = db.server_service;
 
 const server = http.createServer((req, res) => {
@@ -20,7 +19,4 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify({ data: data }));
   });
 });
-
 server.listen(8009);
-setInterval(intervalFunc, 300000);
-// 300000
