@@ -20,9 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     active: {
       type: Sequelize.BOOLEAN, defaultValue: true
-    },
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
+    }
   });
 
   return User;

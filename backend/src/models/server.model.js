@@ -9,8 +9,6 @@ module.exports = (sequelize, Sequelize) => {
         ip_adress: {
             type: Sequelize.STRING
         },
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE,
-    });
+    },{ timestamps: false });
     return Server;
 };

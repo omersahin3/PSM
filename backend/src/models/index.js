@@ -23,6 +23,8 @@ db.user = require("./user.model.js")(sequelize, Sequelize);
 db.role = require("./role.model.js")(sequelize, Sequelize);
 db.server = require("./server.model.js")(sequelize, Sequelize);
 db.service = require("./service.model.js")(sequelize, Sequelize);
+db.log = require("./log.model.js")(sequelize, Sequelize);
+db.server_service = require("./server_service.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -36,15 +38,19 @@ db.user.belongsToMany(db.role, {
 });
 
 db.server.belongsToMany(db.service, {
-  through: "server_services",
-  foreignKey: "serverId",
-  otherKey: "serviceId"
+  through: "server_services"
+});
+db.service.belongsToMany(db.server, {
+  through: "server_services"
 });
 
-db.service.belongsToMany(db.server, {
-  through: "server_services",
-  foreignKey: "serviceId",
-  otherKey: "serverId"
+db.server_service.hasMany(db.log, {
+  foreignKey: 'server_services_id', 
+  sourceKey: 'id'
+});
+db.log.belongsTo(db.server_service,{
+  foreignKey: 'server_services_id', 
+  targetKey: 'id'
 });
 
 db.ROLES = ["user", "admin", "moderator"];
