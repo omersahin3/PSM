@@ -7,7 +7,7 @@
     height: 100%;
     width: 100%;
     align-items: center;
-    min-width: 915px;
+    min-width: 590px;
     padding: 50px 50px 0px 50px;
 }
 .title h2{
@@ -43,7 +43,7 @@
 .mat-table, .mat-paginator{
     width: 100%;
     background: #0E0E10;
-    min-width: 815px;
+    min-width: 490px;
 }
 .mat-header-cell {
     font-weight: 600;
@@ -91,12 +91,4 @@
     font-size: 23px;
     color: #FFFFFF99;
     cursor: pointer;
-}
-/*  MAT-İCON */
-.success{
-    color: greenyellow;
-    display: inline-block;
-}
-.error{
-    color: red;
 }

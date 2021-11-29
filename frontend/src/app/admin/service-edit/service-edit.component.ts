@@ -33,14 +33,13 @@ export class ServiceEditComponent implements OnInit {
     this.serviceEditForm.patchValue({
       name:this.data.name,
       description: this.data.description,
-      server: this.data.servers.length == 0 ? 'No Server' : this.data.servers[0].dns_name
+      server: this.data.servers.length == 0 ? 'No Server' : this.data.servers[0].id
     });
   }
   edit() {
     if (this.serviceEditForm.valid)
     {
       this.service = Object.assign({}, this.serviceEditForm.value)
-      console.log(this.service)
     }
     this.serviceService.update(this.data.id, this.service).subscribe(data => {
       this.alertifyService.success(this.data.name + " Successfully changed !")
@@ -52,6 +51,7 @@ export class ServiceEditComponent implements OnInit {
   retrieveServers(): void {
     this.serverService.getAll().subscribe(data => {
       this.servers = data;
+      console.log(this.servers)
     }, error => {
       console.log(error + "Server Error");
     });

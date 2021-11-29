@@ -29,27 +29,6 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
             <mat-cell *matCellDef="let element" (click)="serviceDetail(element)"> {{element.description}} </mat-cell>
         </ng-container>
-        
-        <!-- Status Column -->
-        <ng-container matColumnDef="status"> 
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serviceDetail(element)">
-                <mat-icon class="success" *ngIf= "element.status == true">check_circle_outline</mat-icon>
-                <mat-icon class="error" *ngIf= "element.status != true">error</mat-icon>
-            </mat-cell>
-        </ng-container>
-
-        <!-- createdAt Column -->
-        <ng-container matColumnDef="createdAt"> 
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Created Time </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serviceDetail(element)" class="date"> {{element.createdAt |  date: 'dd/MM/yyyy hh:mm' }} </mat-cell>
-        </ng-container>
-
-        <!-- updatedAt Column -->
-        <ng-container matColumnDef="updatedAt"> 
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Updated Time </mat-header-cell>
-            <mat-cell *matCellDef="let element" (click)="serviceDetail(element)" class="date"> {{element.updatedAt |  date: 'dd/MM/yyyy hh:mm' }} </mat-cell>
-        </ng-container>
 
         <!-- Edit -->
         <ng-container matColumnDef="edit">

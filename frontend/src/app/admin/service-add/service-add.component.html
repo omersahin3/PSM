@@ -18,7 +18,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Server</mat-label>
           <mat-select formControlName="server" [(value)]="selectedServer">
-            <mat-option [value]="option.dns_name" *ngFor="let option of servers">{{ option .dns_name }}</mat-option>
+            <mat-option [value]="option.id" *ngFor="let option of servers">{{ option.dns_name }}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class="form-input">

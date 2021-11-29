@@ -27,11 +27,4 @@
 .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
   color: gray;
 }
-/* GREEN RED NGIF */
-.green{
-    color: greenyellow;
-}
-.red{
-    color: red;
-}
 

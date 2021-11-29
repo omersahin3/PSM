@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerServiceService } from 'src/app/services/server-service.service';
 
 import { ServerService } from 'src/app/services/server.service';
-import { ServerResponse } from '../model';
+import { Server, ServerResponse } from '../model';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,16 @@ import { ServerResponse } from '../model';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private serverService : ServerService) { }
+  constructor(private serverService : ServerService, private serverServiceService: ServerServiceService) { }
   servers!:ServerResponse[];
+  
   ngOnInit(): void {
     this.retrieveServices();
   }
   retrieveServices(): void {
     this.serverService.getAll().subscribe(data => {
       this.servers = data;
+      console.log(this.servers)
     }, error => {
       console.log(error + "Server Error");
     });

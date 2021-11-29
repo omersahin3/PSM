@@ -30,4 +30,5 @@ export class Server{
   ip_adress!: boolean;
   createdAt!: string;
   updatedAt!: string;
+  services!: Array<any>;
 }

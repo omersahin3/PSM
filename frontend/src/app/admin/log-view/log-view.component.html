@@ -1,0 +1,44 @@
+<div class="log-view">
+  <div class="info">
+    <div class="server-info info">
+      <ul>
+        <li>Server : {{ server.dns_name }}</li>
+        <li>IP Adress : {{ server.ip_adress }}</li>
+        <li>Description : {{ server.description }}</li>
+      </ul>
+    </div>
+    <div class="service-info">
+      <mat-selection-list #services [multiple]="false" (selectionChange)="onGroupsChange(services.selectedOptions.selected[0].value)">
+        <mat-list-option *ngFor="let service of server.services" [value]="service.id">
+          {{ service.name }}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </div>
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort color="primary" matSortActive="id" matSortDirection="asc">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+    
+    <!-- createdAt Column -->
+    <ng-container matColumnDef="createdAt"> 
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Created Time </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="date"> {{element.createdAt |  date: 'dd/MM/yyyy hh:mm' }} </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status"> 
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <mat-icon class="success" *ngIf= "element.status == true">check_circle_outline</mat-icon>
+            <mat-icon class="error" *ngIf= "element.status != true">error</mat-icon>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>

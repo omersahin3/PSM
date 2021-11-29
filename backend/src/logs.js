@@ -12,13 +12,13 @@ function intervalFunc() {
       if(response.statusCode >= 200 && response.statusCode <= 299){
         Log.create({
           status:true,
-          server_services_id: 1
+          server_services_id: 2
         });
       }
       else{
         Log.create({
           status:false,
-          server_services_id: 1
+          server_services_id: 2
         });
       }
     }

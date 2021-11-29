@@ -16,6 +16,7 @@ import { ServerDetailComponent } from './server-detail/server-detail.component';
 import { LoginGuard } from '../login/login.guard';
 import { ServerDeleteComponent } from './server-delete/server-delete.component';
 import { ServiceDeleteComponent } from './service-delete/service-delete.component';
+import { LogViewComponent } from './log-view/log-view.component';
 
 const routes: Routes = [
   {
@@ -23,10 +24,11 @@ const routes: Routes = [
     component: HomeComponent, // Component olarak Home'u aç ve en son router-outlet'in çocuğuna aşşağıdaki componentleri yerleştir.
     canActivate: [LoginGuard],
     children: [
-      { path: '', redirectTo: 'services', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'services', component: ServicesComponent },
       { path: 'servers', component: ServersComponent},
       { path: 'dashboard', component: DashboardComponent},
+      { path: 'logview/:serverId', component: LogViewComponent},
     ],
   },
 ];
@@ -44,6 +46,7 @@ const routes: Routes = [
     ServerDetailComponent,
     ServerDeleteComponent,
     ServiceDeleteComponent,
+    LogViewComponent,
   ],
   imports: [
     CommonModule,

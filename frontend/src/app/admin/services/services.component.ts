@@ -24,7 +24,7 @@ export class ServicesComponent implements OnInit {
     this.retrieveServices();
   }
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'status', 'createdAt', 'updatedAt', 'edit'];
+  displayedColumns: string[] = ['id', 'name', 'description',  'edit'];
   dataSource = new MatTableDataSource(Array<ServiceResponse>());
   
   applyFilter(event: Event) {

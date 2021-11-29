@@ -54,9 +54,10 @@ export class CPasswordComponent implements OnInit {
           console.log(error + "Could not change password");
           this.alertifyService.error(" Could not change password ");
         });
-      };
-    }
-    else{
+      }else{
+        this.alertifyService.error("You entered two different passwords");
+      }
+    }else{
       this.alertifyService.warning(" you entered the same password ");
     }
   }

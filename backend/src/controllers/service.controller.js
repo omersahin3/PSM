@@ -21,7 +21,7 @@ exports.create = (req, res) => {
       if (req.body.server) {
         Server.findOne({
           where: {
-            dns_name: { [Op.or]: [req.body.server] }
+            id: { [Op.or]: [req.body.server] }
           }
         }).then(server => {
           if (!server) {
@@ -93,7 +93,7 @@ exports.update = (req, res) => {
         if (req.body.server) {
           Server.findOne({
             where: {
-              dns_name: { [Op.or]: [req.body.server] }
+              id: { [Op.or]: [req.body.server] }
             }
           }).then(server => {
             if (!server) {

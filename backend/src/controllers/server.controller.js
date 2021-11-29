@@ -50,7 +50,13 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Server.findByPk(id)
+  Server.findOne({
+    where: { id: id },
+    include: [{
+      model: Service,
+      as: "services"
+    }],
+  })
     .then(data => {
       if (data) {
         res.send(data);

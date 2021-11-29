@@ -4,20 +4,21 @@
     </div>
     <div class="cards">
         <div class="card" *ngFor="let server of servers">
-            <h2>{{server.dns_name}}</h2>
-            <div class="scrollbar">
+            <div class="card-header">
+                <h2>{{server.dns_name}}</h2>
+                <mat-icon class="gateway" routerLink="/admin/logview/{{server.id}}">aspect_ratio</mat-icon> 
+            </div>
+            <div class="card-content">
                 <div *ngFor="let service of server.services">
                     <div class="card-items" *ngIf="service.status != true">
                         <p>{{service.name}}</p>    
-                        <mat-icon class="success" *ngIf="service.status == true">check_circle_outline</mat-icon>
-                        <mat-icon class="error" *ngIf="service.status != true">error</mat-icon> 
+                        <mat-icon class="error">error</mat-icon> 
                     </div>
                 </div>
                 <div *ngFor="let service of server.services">
                     <div class="card-items" *ngIf="service.status == true">
                         <p>{{service.name}}</p>    
-                        <mat-icon class="success" *ngIf="service.status == true">check_circle_outline</mat-icon>
-                        <mat-icon class="error" *ngIf="service.status != true">error</mat-icon> 
+                        <mat-icon class="success">check_circle_outline</mat-icon>
                     </div>
                 </div>
             </div>

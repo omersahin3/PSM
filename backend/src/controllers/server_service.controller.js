@@ -3,7 +3,8 @@ const ServerService = db.server_service;
 
 exports.findAll = (req, res) => {
   ServerService.findAll({ 
-    include: ["logs"]
+    include: ["logs"],
+    order: [['id' , 'ASC']]
    })
     .then(data => {
       res.send(data);
