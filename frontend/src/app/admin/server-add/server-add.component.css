@@ -1,45 +1,58 @@
-.server-add .title{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.server-add .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .server-add .title h2 {
-    margin: 16px;
+  margin: 16px;
 }
 .server-add .title .icon {
-    font-size: 24px;
-    color: #4B4B4B;
-    margin: 16px;
+  font-size: 24px;
+  color: #4b4b4b;
+  margin: 16px;
 }
 .server-add .body form {
-    display: flex;
-    flex-direction: column;
-    margin: 36px 36px 0px 36px;
+  display: flex;
+  flex-direction: column;
+  margin: 36px 36px 0px 36px;
 }
-.mat-form-field{
-    width: 350px;
-    caret-color: #D4D4D4;
+.mat-form-field {
+  width: 350px;
+  caret-color: #d4d4d4;
 }
 
 .server-add .buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin: 8px 36px 30px 0px;
-    width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 36px 30px 0px;
+  width: 100%;
 }
 .buttons .cancel {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 .server-add .noValue {
-    color: red;
-    font-size: small;
-    margin-top:-15px;
+  color: red;
+  font-size: small;
+  margin-top: -15px;
 }
 .server-add .mat-input-element:disabled,
-.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select.mat-form-field-disabled
+  .mat-form-field-infix::after {
   color: gray;
 }
 .mat-stroked-button.mat-purple {
-    border-color: #9A6AEF;
-    color: #9A6AEF;
+  border-color: #9a6aef;
+  color: #9a6aef;
+}
+.services {
+  background-color: #0c0a0e;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+}
+.service-header {
+  font-size: 12px;
+  color: #7b7b7b;
+}
+.check {
+  display: flex;
 }

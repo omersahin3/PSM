@@ -1,4 +1,5 @@
 export interface ServiceResponse {
+  isSelected: boolean;
   id: number,
   name: string,
   description: string,

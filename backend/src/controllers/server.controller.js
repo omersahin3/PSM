@@ -17,6 +17,20 @@ exports.create = (req, res) => {
     ip_adress: req.body.ip_adress,
   })
     .then(server => {
+      if (req.body.service) {
+        for(let i=0;i<req.body.service.length;i++){
+          Service.findOne({
+            where: {
+              id: { [Op.or]: [req.body.service[i].service_id] }
+            }
+          }).then(service => {
+            if (!service) {
+              return res.status(404).send({ message: "Service Not found." });
+            }
+            server.setServices(service);
+          });
+        }
+      } 
       res.send({ data: server , message: "Successfully added server !" });
     })
     .catch(err => {

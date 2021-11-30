@@ -22,6 +22,10 @@
         <span *ngIf="serverAddForm.controls['ip_adress'].invalid && (serverAddForm.controls['ip_adress'].dirty || serverAddForm.controls['ip_adress'].touched)" class="noValue">
           *Please enter ip adress
         </span>
+        <div class="services">
+          <h5 class="service-header">Services</h5>
+          <mat-checkbox formControlName="service" class="check" *ngFor="let service of services; let i = index" (change)="serviceSelected(service)" required>{{service.name}}</mat-checkbox>
+        </div>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label> Description </mat-label>
           <textarea matInput rows="3" formControlName="description" required></textarea>
