@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { ServerServiceService } from 'src/app/services/server-service.service';
 import { ServerService } from 'src/app/services/server.service';
 import { Server, ServerResponse, Service } from '../model';
@@ -16,7 +17,7 @@ import { Server, ServerResponse, Service } from '../model';
 export class LogViewComponent implements OnInit {
 
   constructor(private activatedRoute:ActivatedRoute, private serverService: ServerService,
-    private serverServiceService: ServerServiceService) { }
+    private serverServiceService: ServerServiceService, private alertifyService: AlertifyService) { }
   displayedColumns: string[] = ['id', 'createdAt' , 'status',];
   dataSource = new MatTableDataSource(Array<ServerResponse>());
   server:Server = new Server();
@@ -42,13 +43,12 @@ export class LogViewComponent implements OnInit {
       for(let i=0; i< data.length;i++){
         if(data[i].serviceId==id){
           this.dataSource.data = data[i].logs;
-          console.log(data[i].logs.length)
-          let namex = data[i].logs.length;
-          console.log(data[i].logs[namex-1])
+          this.alertifyService.success(" Successfully viewed !")
         }
       }
     }, error => {
       console.log(error + "ServerService Error");
+      this.alertifyService.error(" Could not be displayed !");
     });
   }
   onGroupsChange(id: number){

@@ -49,6 +49,9 @@ export class RegisterComponent implements OnInit {
       this.errorMessage = error.error.message;
       this.isSignUpFailed = true;
       console.log(error + "Failed to Register!");
+      this.snackbar.open('Failed to Register!', 'OK', {
+        panelClass: ["custom-style-warn"], duration: 3000
+      });
     });
   }
 

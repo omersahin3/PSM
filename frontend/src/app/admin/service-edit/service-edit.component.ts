@@ -46,6 +46,7 @@ export class ServiceEditComponent implements OnInit {
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Service could not be edited");
+      this.alertifyService.error(this.data.name + " Could not edit service ")
     });
   }
   retrieveServers(): void {

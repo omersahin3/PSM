@@ -4,6 +4,12 @@ const db = require("./models");
 const Log = db.log;
 
 function intervalFunc() {
+  req(url, 2);
+}
+
+module.exports = intervalFunc;
+
+function req (url, id) {
   request(url, function (err, response, body) {
     if(err){
       console.log(JSON.stringify({ message: 'error:', err }));
@@ -12,16 +18,17 @@ function intervalFunc() {
       if(response.statusCode >= 200 && response.statusCode <= 299){
         Log.create({
           status:true,
-          server_services_id: 2
+          server_services_id: id
         });
       }
       else{
         Log.create({
           status:false,
-          server_services_id: 2
+          server_services_id: id
         });
       }
     }
   });
 }
-module.exports = intervalFunc;
+
+

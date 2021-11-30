@@ -36,7 +36,7 @@ export class UserService {
     return this.http.get(`${API_URL}/${id}`);
   }
 
-  Changepass(id: any, data: any): Observable<any> {
+  changepass(id: any, data: any): Observable<any> {
     return this.http.put(`${API_URL}/changepass/${id}`, data);
   }
 }

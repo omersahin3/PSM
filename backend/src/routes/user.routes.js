@@ -24,7 +24,7 @@ userRouter.get(
 userRouter.put(
   "/changepass/:id", 
   [authJwt.verifyToken, authJwt.isAdmin], 
-  usercontroller.Changepass
+  usercontroller.changepass
 );
 
 module.exports = {

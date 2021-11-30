@@ -58,6 +58,9 @@ export class LoginComponent implements OnInit {
       this.errorMessage = error.error.message;
       this.isLoginFailed = true;
       console.log(error + "Login Failed!");
+      this.snackbar.open('Login Failed!', 'OK', {
+        panelClass: ["custom-style-warn"], duration: 3000
+      });
     });
   }
   

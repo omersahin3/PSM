@@ -15,14 +15,14 @@ export class DashboardComponent implements OnInit {
   servers!:ServerResponse[];
   
   ngOnInit(): void {
-    this.retrieveServices();
+    this.getInfo();
   }
-  retrieveServices(): void {
-    this.serverService.getAll().subscribe(data => {
+  getInfo() {
+    this.serverServiceService.getInfo().subscribe(data => {
       this.servers = data;
       console.log(this.servers)
     }, error => {
-      console.log(error + "Server Error");
+      console.log(error + "ServerService Error");
     });
   }
 }

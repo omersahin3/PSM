@@ -6,9 +6,6 @@ module.exports = (sequelize, Sequelize) => {
         description: {
             type: Sequelize.TEXT
         },
-        status: {
-            type: Sequelize.BOOLEAN, defaultValue: true
-        },
         // Timestamps
         createdAt: Sequelize.DATE,
         updatedAt: Sequelize.DATE,

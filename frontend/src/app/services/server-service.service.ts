@@ -13,4 +13,7 @@ export class ServerServiceService {
   getAll(): Observable<any> {
     return this.http.get(API_URL);
   }
+  getInfo(): Observable<any> {
+    return this.http.get(`${API_URL}/dashboard/`);
+  }
 }

@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Your profile could not be edited");
-      this.alertifyService.success(" Your profile could not be edited ")
+      this.alertifyService.error(" Your profile could not be edited ")
     });
   }
   

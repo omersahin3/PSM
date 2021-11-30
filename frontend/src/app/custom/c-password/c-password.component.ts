@@ -47,7 +47,7 @@ export class CPasswordComponent implements OnInit {
     if( current_password != new_password)
     {
       if (confirm_new_password === new_password) {
-        this.userService.Changepass(this.currentUser.id, this.user).subscribe(data => {
+        this.userService.changepass(this.currentUser.id, this.user).subscribe(data => {
           this.alertifyService.success(this.currentUser.username + " Your password has been successfully changed !")
           this.dialogRef.closeAll();
         }, error => {

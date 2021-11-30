@@ -47,7 +47,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-exports.Changepass = (req, res) => {
+exports.changepass = (req, res) => {
   const id = req.params.id;
 
   User.findByPk(id)
