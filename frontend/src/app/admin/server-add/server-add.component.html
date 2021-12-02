@@ -8,37 +8,41 @@
     <hr>
     <div mat-dialog-content class="body">
       <form [formGroup]="serverAddForm">
-        <mat-form-field appearance="fill" class="form-input">
-          <mat-label> Server Name </mat-label>
-          <input matInput placeholder="Server Name" formControlName="dns_name" required>
-        </mat-form-field>
-        <span *ngIf="serverAddForm.controls['dns_name'].invalid && (serverAddForm.controls['dns_name'].dirty || serverAddForm.controls['dns_name'].touched)" class="noValue">
-            *Please enter server dns name
-        </span>
-        <mat-form-field appearance="fill" class="form-input">
-          <mat-label> IP Adress </mat-label>
-          <input matInput placeholder="IP Adress" formControlName="ip_adress" required>
-        </mat-form-field>
-        <span *ngIf="serverAddForm.controls['ip_adress'].invalid && (serverAddForm.controls['ip_adress'].dirty || serverAddForm.controls['ip_adress'].touched)" class="noValue">
-          *Please enter ip adress
-        </span>
-        <div class="services">
-          <h5 class="service-header">Services</h5>
-          <mat-checkbox formControlName="service" class="check" *ngFor="let service of services; let i = index" (change)="serviceSelected(service)" required>{{service.name}}</mat-checkbox>
+        <div class="left">
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label> Server Name </mat-label>
+            <input matInput placeholder="Server Name" formControlName="dns_name" required>
+          </mat-form-field>
+          <span *ngIf="serverAddForm.controls['dns_name'].invalid && (serverAddForm.controls['dns_name'].dirty || serverAddForm.controls['dns_name'].touched)" class="noValue">
+              *Please enter server dns name
+          </span>
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label> IP Adress </mat-label>
+            <input matInput placeholder="IP Adress" formControlName="ip_adress" required>
+          </mat-form-field>
+          <span *ngIf="serverAddForm.controls['ip_adress'].invalid && (serverAddForm.controls['ip_adress'].dirty || serverAddForm.controls['ip_adress'].touched)" class="noValue">
+            *Please enter ip adress
+          </span>
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label> Description </mat-label>
+            <textarea matInput rows="4" formControlName="description" required></textarea>
+          </mat-form-field>
+          <span *ngIf="serverAddForm.controls['description'].invalid && (serverAddForm.controls['description'].dirty || serverAddForm.controls['description'].touched)" class="noValue">
+            *Please enter description
+          </span>
         </div>
-        <mat-form-field appearance="fill" class="form-input">
-          <mat-label> Description </mat-label>
-          <textarea matInput rows="3" formControlName="description" required></textarea>
-        </mat-form-field>
-        <span *ngIf="serverAddForm.controls['description'].invalid && (serverAddForm.controls['description'].dirty || serverAddForm.controls['description'].touched)" class="noValue">
-          *Please enter description
-        </span>
+        <div class="services">
+          <h5 class="service-header">Services *</h5>
+          <div class="checkbox">
+            <mat-checkbox formControlName="service" class="check" *ngFor="let service of services; let i = index" (change)="serviceSelected(service)" required>{{service.name}}</mat-checkbox>
+          </div>
+        </div>
       </form>
     </div>
     <div mat-dialog-actions>
       <div class="buttons">
         <button mat-stroked-button mat-dialog-close mat-dialog-close="false" class="cancel" color="purple">Cancel</button>
-        <button mat-raised-button color="primary" [disabled]="serverAddForm.invalid" (click)="add()">Save</button>
+        <button mat-raised-button color="primary" [disabled]="serverAddForm.controls['dns_name'].invalid || serverAddForm.controls['ip_adress'].invalid || serverAddForm.controls['description'].invalid" (click)="add()">Save</button>
       </div>
     </div>
 </div>

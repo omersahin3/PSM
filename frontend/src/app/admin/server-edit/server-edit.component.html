@@ -8,27 +8,42 @@
     <hr>
     <div mat-dialog-content class="body">
       <form [formGroup]="serverEditForm">
-        <mat-form-field appearance="fill" class="form-input">
-          <mat-label>Server Name</mat-label>
-          <input matInput placeholder="Server Name" formControlName="dns_name" required>
-        </mat-form-field>
-        <span *ngIf="serverEditForm.controls['dns_name'].invalid && (serverEditForm.controls['dns_name'].dirty || serverEditForm.controls['dns_name'].touched)" class="noValue">
-            *Please enter dns name
-        </span>
-        <mat-form-field appearance="fill" class="form-input">
-          <mat-label> IP Adress </mat-label>
-          <input matInput placeholder="IP Adress" formControlName="ip_adress" required>
-        </mat-form-field>
-        <span *ngIf="serverEditForm.controls['ip_adress'].invalid && (serverEditForm.controls['ip_adress'].dirty || serverEditForm.controls['ip_adress'].touched)" class="noValue">
-          *Please enter ip adress
-        </span>
-        <mat-form-field appearance="fill" class="form-input">
-          <mat-label>Description</mat-label>
-          <textarea matInput rows="3" formControlName="description" required></textarea>
-        </mat-form-field>
-        <span *ngIf="serverEditForm.controls['description'].invalid && (serverEditForm.controls['description'].dirty || serverEditForm.controls['description'].touched)" class="noValue">
-          *Please enter description
-        </span>
+        <div class="left">
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>Server Name</mat-label>
+            <input matInput placeholder="Server Name" formControlName="dns_name" required>
+          </mat-form-field>
+          <span *ngIf="serverEditForm.controls['dns_name'].invalid && (serverEditForm.controls['dns_name'].dirty || serverEditForm.controls['dns_name'].touched)" class="noValue">
+              *Please enter dns name
+          </span>
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label> IP Adress </mat-label>
+            <input matInput placeholder="IP Adress" formControlName="ip_adress" required>
+          </mat-form-field>
+          <span *ngIf="serverEditForm.controls['ip_adress'].invalid && (serverEditForm.controls['ip_adress'].dirty || serverEditForm.controls['ip_adress'].touched)" class="noValue">
+            *Please enter ip adress
+          </span>
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>Description</mat-label>
+            <textarea matInput rows="4" formControlName="description" required></textarea>
+          </mat-form-field>
+          <span *ngIf="serverEditForm.controls['description'].invalid && (serverEditForm.controls['description'].dirty || serverEditForm.controls['description'].touched)" class="noValue">
+            *Please enter description
+          </span>
+      </div>
+      <div class="services">
+        <h5 class="service-header">Services *</h5>
+        <div class="checkbox">
+          <label *ngFor="let service of services; let i = index">
+            <label *ngFor="let item of serviceId">
+              <label *ngIf="service.id == item.service_id">
+                <mat-checkbox *ngIf="item.check == true" class="check" [checked]="true" (change)="serviceSelected(service)" required>{{service.name}}</mat-checkbox>
+                <mat-checkbox *ngIf="item.check == false" class="check" [checked]="false" (change)="serviceSelected(service)" required>{{service.name}}</mat-checkbox>
+              </label>
+            </label>
+          </label>
+        </div>
+      </div>
       </form>
     </div>
     <div mat-dialog-actions>
@@ -38,4 +53,3 @@
       </div>
     </div>
 </div>
-  

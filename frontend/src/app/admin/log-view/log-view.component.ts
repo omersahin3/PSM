@@ -43,9 +43,9 @@ export class LogViewComponent implements OnInit {
       for(let i=0; i< data.length;i++){
         if(data[i].serviceId==id){
           this.dataSource.data = data[i].logs;
-          this.alertifyService.success(" Successfully viewed !")
         }
       }
+      this.alertifyService.success(" Successfully viewed !")
     }, error => {
       console.log(error + "ServerService Error");
       this.alertifyService.error(" Could not be displayed !");

@@ -49,7 +49,8 @@ exports.findAll = (req, res) => {
     include: [{
       model: Server,
       as: "servers"
-    }]
+    }],
+    order: [['id' , 'ASC']]
    })
     .then(data => {
       res.send(data);

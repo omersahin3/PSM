@@ -1,45 +1,82 @@
-.server-edit .title{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.server-edit .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .server-edit .title h2 {
-    margin: 16px;
+  margin: 16px;
 }
 .server-edit .title .icon {
-    font-size: 24px;
-    color: #4B4B4B;
-    margin: 16px;
+  font-size: 24px;
+  color: #4b4b4b;
+  margin: 16px;
 }
 .server-edit .body form {
-    display: flex;
-    flex-direction: column;
-    margin: 36px 36px 0px 36px;
+  display: flex;
+  flex-direction: row;
+  margin: 36px 36px 0px 36px;
 }
-.mat-form-field{
-    width: 350px;
-    caret-color: #D4D4D4;
+#form {
+  display: flex;
+  flex-direction: row;
+  margin: 36px 36px 0px 36px;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+}
+.mat-form-field {
+  width: 350px;
+  caret-color: #d4d4d4;
 }
 
 .server-edit .buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin: 8px 36px 30px 0px;
-    width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 36px 30px 0px;
+  width: 100%;
 }
 .buttons .cancel {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 .server-edit .noValue {
-    color: red;
-    font-size: small;
-    margin-top:-15px;
+  color: red;
+  font-size: small;
+  margin-top: -15px;
 }
 .server-edit .mat-input-element:disabled,
-.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+.mat-form-field-type-mat-native-select.mat-form-field-disabled
+  .mat-form-field-infix::after {
   color: gray;
 }
 .mat-stroked-button.mat-purple {
-    border-color: #9A6AEF;
-    color: #9A6AEF;
+  border-color: #9a6aef;
+  color: #9a6aef;
+}
+/* CHECKBOX */
+.services {
+  background-color: #0c0a0e;
+  padding: 10px 16px;
+  margin: 0px 12px;
+  width: 200px;
+  max-height: 242px;
+}
+.service-header {
+  font-size: 12px;
+  color: #d4d4d4;
+}
+.checkbox {
+  max-height: 190px;
+  overflow-y: auto;
+}
+.check {
+  display: flex;
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 50%;
 }

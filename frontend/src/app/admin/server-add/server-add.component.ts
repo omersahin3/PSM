@@ -19,7 +19,6 @@ export class ServerAddComponent implements OnInit {
   server:Server = new Server();
   services!: ServiceResponse[];
   serviceId!: Array<any>;
-  body: any;
   createserverForm() {
     this.serverAddForm = this.formBuilder.group({
       dns_name: ["", Validators.required],
@@ -33,18 +32,15 @@ export class ServerAddComponent implements OnInit {
     this.retrieveServices();
   }
   add() {
-    if (this.serverAddForm.valid)
-    {
-      this.server = Object.assign({}, this.serverAddForm.value)
-      this.body = {
-        dns_name: this.server.dns_name,
-        ip_adress: this.server.ip_adress,
-        description: this.server.description,
-        service: this.serviceId
-      };
-      console.log(this.body)
-    }
-    this.serverService.create(this.body).subscribe(data => {
+    this.server = Object.assign({}, this.serverAddForm.value)
+    const body = {
+      dns_name: this.server.dns_name,
+      ip_adress: this.server.ip_adress,
+      description: this.server.description,
+      service: this.serviceId
+    };
+    console.log(body)
+    this.serverService.create(body).subscribe(data => {
       this.alertifyService.success(data.data.dns_name + " Successfully added !")
       this.dialogRef.closeAll();
     }, error => {
