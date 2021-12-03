@@ -18,9 +18,23 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Description</mat-label>
-          <textarea matInput rows="3" formControlName="description" required></textarea>
+          <textarea matInput rows="4" formControlName="description" required></textarea>
         </mat-form-field>
       </form>
+      <div class="services">
+        <h5 class="service-header">Services *</h5>
+        <div class="checkbox">
+          <label *ngFor="let service of services; let i = index">
+            <label *ngFor="let item of serviceId">
+              <label *ngIf="service.id == item.service_id">
+                <mat-checkbox *ngIf="item.check == true" class="check" [checked]="true" [disabled]="true">{{service.name}}</mat-checkbox>
+                <mat-checkbox *ngIf="item.check == false" class="check" [checked]="false" [disabled]="true">{{service.name}}</mat-checkbox>
+              </label>
+            </label>
+          </label>
+        </div>
+      </div>
     </div>
 </div>
+
   

@@ -58,7 +58,12 @@
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: #bb86fc;
 }
-
 .mat-checkbox-frame {
   border-color: #bb86fc;
+}
+.mat-checkbox-disabled .mat-checkbox-label {
+  color: #ffffff99;
+}
+.mat-checkbox-disabled.mat-accent .mat-checkbox-background {
+  background-color: #ffffff99;
 }

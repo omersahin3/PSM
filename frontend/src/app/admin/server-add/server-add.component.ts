@@ -52,7 +52,7 @@ export class ServerAddComponent implements OnInit {
     this.serviceService.getAll().subscribe(data => {
       this.services = data;
     }, error => {
-      console.log(error + "Server Error");
+      console.log(error + "Service Error");
     });
   }
   serviceSelected(item:any) {

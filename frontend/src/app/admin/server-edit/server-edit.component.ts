@@ -63,7 +63,7 @@ export class ServerEditComponent implements OnInit {
       this.services = data;
       this.getServicesSetCheckValues();
     }, error => {
-      console.log(error + "Server Error");
+      console.log(error + "Service Error");
     });
   }
   serviceSelected(item:any) {
