@@ -9,15 +9,15 @@ let bcrypt = require("bcryptjs");
 function initialRole() {
   Role.create({
     id: 1,
-    name: "user",
+    name: "user"
   });
   Role.create({
     id: 2,
-    name: "moderator",
+    name: "moderator"
   });
   Role.create({
     id: 3,
-    name: "admin",
+    name: "admin"
   });
 }
 function initialUser() {
@@ -40,171 +40,79 @@ function initialServer() {
     dns_name: "kampus.ankageo.com",
     description: "Kampüs",
     ip_adress: "ip_adress",
+  }).then(server => {
+    Service.findAll({
+      where: {
+        name: { [Op.or]: ["PostGIS", "Backend", "GeoServer", "Pano"]}
+      }
+    }).then(service => {
+      server.setServices(service);
+    })
   });
   Server.create({
     dns_name: "licence.ankageo.com",
     description: "Lisans",
     ip_adress: "ip_adress",
+  }).then(server => {
+    Service.findAll({
+      where: {
+        name: { [Op.or]: ["PostGIS"]}
+      }
+    }).then(service => {
+      server.setServices(service);
+    })
   });
   Server.create({
     dns_name: "beyoglu.ankageo.com",
     description: "Beyoğlu",
     ip_adress: "ip_adress",
+  }).then(server => {
+    Service.findAll({
+      where: {
+        name: { [Op.or]: ["Backend"]}
+      }
+    }).then(service => {
+      server.setServices(service);
+    })
   });
   Server.create({
     dns_name: "kgm.ankageo.com",
     description: "KGM",
     ip_adress: "ip_adress",
+  }).then(server => {
+    Service.findAll({
+      where: {
+        name: { [Op.or]: ["PostGIS", "Backend", "GeoServer", "Pano", "Frontend", "Demo"]}
+      }
+    }).then(service => {
+      server.setServices(service);
+    })
   });
 }
 function initialService() {
-  // kampüs
   Service.create({
     name: "PostGIS",
     description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kampus.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
   });
   Service.create({
     name: "Backend",
     description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kampus.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
   });
   Service.create({
     name: "GeoServer",
     description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kampus.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
   });
   Service.create({
     name: "Pano",
     description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kampus.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
-  });
-  // Lisans
-  Service.create({
-    name: "PostGIS",
-    description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["licence.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
-  });
-  // Beyoğlu
-  Service.create({
-    name: "PostGIS",
-    description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["beyoglu.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
-  });
-  // KGM
-  Service.create({
-    name: "PostGIS",
-    description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kgm.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
-  });
-  Service.create({
-    name: "Backend",
-    description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kgm.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
-  });
-  Service.create({
-    name: "GeoServer",
-    description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kgm.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
-  });
-  Service.create({
-    name: "Pano",
-    description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kgm.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
   });
   Service.create({
     name: "Frontend",
     description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kgm.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
   });
   Service.create({
     name: "Demo",
     description: "description",
-  }).then((service) => {
-    Server.findOne({
-      where: {
-        dns_name: { [Op.or]: ["kgm.ankageo.com"] },
-      },
-    }).then((server) => {
-      service.setServers(server);
-    });
   });
 }
 

@@ -4,7 +4,7 @@ const db = require("./models");
 const Log = db.log;
 
 function intervalFunc() {
-  req(url, 3);
+  req(url, 1);
 }
 
 module.exports = intervalFunc;

@@ -15,12 +15,6 @@
         <span *ngIf="serviceAddForm.controls['name'].invalid && (serviceAddForm.controls['name'].dirty || serviceAddForm.controls['name'].touched)" class="noValue">
             *Please enter service name
         </span>
-        <mat-form-field appearance="fill">
-          <mat-label>Server</mat-label>
-          <mat-select formControlName="server" [(value)]="selectedServer">
-            <mat-option [value]="option.id" *ngFor="let option of servers">{{ option.dns_name }}</mat-option>
-          </mat-select>
-        </mat-form-field>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Description</mat-label>
           <textarea matInput rows="3" formControlName="description" required></textarea>

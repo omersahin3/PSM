@@ -5,9 +5,9 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
   // this code returns if the server does not exist
-  if (!req.body.name || !req.body.server) {
+  if (!req.body.name || !req.body.description) {
     res.status(400).send({
-      message: "name,description and server can not be empty!"
+      message: "name,description can not be empty!"
     });
     return;
   }
@@ -18,22 +18,7 @@ exports.create = (req, res) => {
     description: req.body.description,
   })
     .then(service => {
-      if (req.body.server) {
-        Server.findOne({
-          where: {
-            id: { [Op.or]: [req.body.server] }
-          }
-        }).then(server => {
-          if (!server) {
-            return res.status(404).send({ message: "Server Not found." });
-          }
-          service.setServers(server).then(() => {
-            res.send({ data: service , message: "Successfully added service !" });
-          });
-        });
-      } else {
-        res.send({ data: service , message: "Successfully added service !" });
-      }
+      res.send({ data: service , message: "Successfully added service !" });
     })
     .catch(err => {
       res.status(500).send({
@@ -46,10 +31,6 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
 
   Service.findAll({ 
-    include: [{
-      model: Server,
-      as: "servers"
-    }],
     order: [['id' , 'ASC']]
    })
     .then(data => {
@@ -91,27 +72,7 @@ exports.update = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        if (req.body.server) {
-          Server.findOne({
-            where: {
-              id: { [Op.or]: [req.body.server] }
-            }
-          }).then(server => {
-            if (!server) {
-              return res.status(404).send({ message: "Server Not found." });
-            }
-            Service.findOne({
-              where: {
-                id: { [Op.or]: [id] }
-              }
-            }).then(service => {
-              // We set the server line to the service line
-              service.setServers(server).then(() => {
-                res.send({ message: "Service was updated successfully." });
-              });
-            });
-          });
-        }
+        res.send({ message: "Service was updated successfully." });
       } else {
         res.send({
           message: `Cannot update Service with id=${id}. Maybe Service was not found or req.body is empty!`

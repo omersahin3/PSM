@@ -14,39 +14,28 @@ import { ServerResponse, Service } from '../model';
 export class ServiceAddComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private serviceService:ServiceService, 
-    private alertifyService: AlertifyService, private dialogRef: MatDialog, private serverService: ServerService) { }
+    private alertifyService: AlertifyService, private dialogRef: MatDialog) { }
   serviceAddForm!: FormGroup;
   service:Service = new Service();
-  servers!: ServerResponse[];
-  selectedServer= '';
   createserviceAddForm() {
     this.serviceAddForm = this.formBuilder.group({
       name: ["", Validators.required],
-      server: ["", Validators.required],
-      description: ["", Validators.required],
+      description: ["", Validators.required]
     });
   }
 
   ngOnInit(): void {
     this.createserviceAddForm();
-    this.retrieveServers();
   }
   
   add() {
-    this.service = Object.assign({}, this.serviceAddForm.value) 
+    this.service = Object.assign({}, this.serviceAddForm.value); 
     this.serviceService.create(this.service).subscribe(data => {
       this.alertifyService.success(data.data.name + " Successfully added !")
       this.dialogRef.closeAll();
     }, error => {
       console.log(error + "Could not add service");
       this.alertifyService.error(" Could not add service ")
-    });
-  }
-  retrieveServers(): void {
-    this.serverService.getAll().subscribe(data => {
-      this.servers = data;
-    }, error => {
-      console.log(error + "Server Error");
     });
   }
 }
