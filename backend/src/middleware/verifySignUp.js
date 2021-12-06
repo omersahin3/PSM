@@ -3,6 +3,10 @@ const ROLES = db.ROLES;
 const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
+  if (!req.body.username || !req.body.email || !req.body.password) {
+    res.status(400).send({ message: "Fill in the required fields!"}); 
+    return;
+  }
   // Username
   User.findOne({
     where: {
@@ -11,7 +15,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
   }).then(user => {
     if (user) {
       res.status(400).send({
-        message: "Failed! Username is already in use!"
+        message: "Failed! Username is already in use !"
       });
       return;
     }
@@ -24,7 +28,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     }).then(user => {
       if (user) {
         res.status(400).send({
-          message: "Failed! Email is already in use!"
+          message: "Failed! Email is already in use !"
         });
         return;
       }

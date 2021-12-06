@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   getInfo() {
     this.serverServiceService.getInfo().subscribe(data => {
       this.servers = data;
-      console.log(this.servers)
+      // console.log(this.servers)
     }, error => {
       console.log(error + "ServerService Error");
     });

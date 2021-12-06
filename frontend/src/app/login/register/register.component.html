@@ -8,24 +8,24 @@
             <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-group" id="form">
                 <label>
                     <span class="input-title">Username</span>
-                    <input type="text" placeholder="Username" formControlName="username">
-                    <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)" class="noValue" required>
+                    <input type="text" placeholder="Username" formControlName="username" required>
+                    <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)" class="noValue">
                         <span *ngIf="registerForm.controls['username'].errors?.required">Username is required</span>
                         <span *ngIf="registerForm.controls['username'].errors?.minlength">Username must be at least 3 characters</span>
                     </div>
                 </label>
                 <label>
                     <span class="input-title">Email</span>
-                    <input type="email" placeholder="Email" formControlName="email">
-                    <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="noValue" required>
+                    <input type="email" placeholder="Email" formControlName="email" required>
+                    <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="noValue">
                         <span *ngIf="registerForm.controls['email'].errors?.required">Email is required</span>
                         <span *ngIf="registerForm.controls['email'].errors?.minlength">Email must be a valid email address</span>
                     </div>
                 </label>
                 <label>
                     <span class="input-title">Password</span>
-                    <input type="password" placeholder="Password" formControlName="password">
-                    <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="noValue" required>
+                    <input type="password" placeholder="Password" formControlName="password" required>
+                    <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="noValue">
                         <span *ngIf="registerForm.controls['password'].errors?.required">Password is required</span>
                         <span *ngIf="registerForm.controls['password'].errors?.minlength">Password must be at least 6 characters</span>
                     </div>

@@ -39,9 +39,9 @@ export class LogViewComponent implements OnInit {
 
   retrieveServerServices(id:number): void {
     this.serverServiceService.getAll().subscribe(data => {
-      console.log(data)
+      // console.log(data)
       for(let i=0; i< data.length;i++){
-        if(data[i].serviceId==id){
+        if(data[i].serviceId==id && data[i].serverId==this.server.id){
           this.dataSource.data = data[i].logs;
         }
       }

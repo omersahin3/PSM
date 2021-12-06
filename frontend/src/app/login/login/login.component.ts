@@ -17,9 +17,6 @@ export class LoginComponent implements OnInit {
      private snackbar: MatSnackBar) { }
   loginForm!:FormGroup;
   user:getUser = new getUser();
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
   roles: string[] = [];
   createUserLoginForm(){
     this.loginForm = this.formbuilder.group({
@@ -31,7 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createUserLoginForm();
     if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
@@ -44,21 +40,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user.username, this.user.password).subscribe(data => {
       this.tokenStorage.saveToken(data.accessToken);
       this.tokenStorage.saveUser(data);
-
-      this.isLoginFailed = false;
-      this.isLoggedIn = true;
-      this.snackbar.open('Login Succesfully!', 'OK', {
-        panelClass: ["custom-style"], duration: 3000
-      });
       this.roles = this.tokenStorage.getUser().roles;
       if (this.roles[0] === 'ROLE_ADMIN') {
         this.reloadAdminPage();
       }
     }, error => {
-      this.errorMessage = error.error.message;
-      this.isLoginFailed = true;
       console.log(error + "Login Failed!");
-      this.snackbar.open('Login Failed!', 'OK', {
+      this.snackbar.open(error.error.message, 'OK', {
         panelClass: ["custom-style-warn"], duration: 3000
       });
     });

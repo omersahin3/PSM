@@ -9,8 +9,8 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-  if (!req.body.username) {
-    res.status(400).send({ message: "Username can not be empty!"}); 
+  if (!req.body.username || !req.body.email || !req.body.password) {
+    res.status(400).send({ message: "Username && email && password can not be empty!"}); 
     return;
   }
 

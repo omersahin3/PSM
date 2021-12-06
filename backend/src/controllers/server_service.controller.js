@@ -24,46 +24,47 @@ exports.findAll = (req, res) => {
     });
 };
 exports.dashboard = async (req, res) => {
-  const serverdata = await Server.findAll({
-    include: [
-      {
-        model: Service,
-        as: "services"
-      },
-    ],
-    order: [
-      ["id", "ASC"],
-      [Service, "id", "ASC"]
-    ]
-  });
-  const data = await ServerService.findAll({
-    include: ["logs"],
-    order: [
-      ["id", "ASC"],
-      [Log, "id", "ASC"]
-    ]
-  });
-  for (let i = 0; i < serverdata.length; i++) {
-    for (let j = 0; j < serverdata[i].services.length; j++) {
-      for (let k = 0; k < data.length; k++) {
-        if (data[k].serviceId == serverdata[i].services[j].id && data[k].serverId == serverdata[i].dataValues.id) {
-          let last = data[k].logs.length - 1;
-          if (data[k].logs.length > 0) {
-            serverdata[i].services[j].dataValues.logstatus = data[k].logs[last].status;
-          }else{
-            serverdata[i].services[j].dataValues.logstatus = false;
+  try {
+    const serverdata = await Server.findAll({
+      include: [
+        {
+          model: Service,
+          as: "services"
+        },
+      ],
+      order: [
+        ["id", "ASC"],
+        [Service, "id", "ASC"]
+      ]
+    });
+    const data = await ServerService.findAll({
+      include: ["logs"],
+      order: [
+        ["id", "ASC"],
+        [Log, "id", "ASC"]
+      ]
+    });
+
+    for (let i = 0; i < serverdata.length; i++) {
+      for (let j = 0; j < serverdata[i].services.length; j++) {
+        for (let k = 0; k < data.length; k++) {
+          if (data[k].serviceId == serverdata[i].services[j].id && data[k].serverId == serverdata[i].dataValues.id) {
+            let last = data[k].logs.length - 1;
+            if (data[k].logs.length > 0) {
+              serverdata[i].services[j].dataValues.logstatus = data[k].logs[last].status;
+            }else{
+              serverdata[i].services[j].dataValues.logstatus = false;
+            }
           }
         }
       }
     }
-  }
-
-  res.send(serverdata);
-  // })
-  // .catch(err => {
-  //   res.status(500).send({
-  //     message:
-  //       err.message || "Some error occurred while retrieving dashboard."
-  //   });
-  // });
+    
+    res.send(serverdata);
+  }catch(err) {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving dashboard."
+    });
+  };
 };

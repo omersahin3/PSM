@@ -47,7 +47,7 @@ app.use((err, req, res, next) => {
 });
 
 const intervalFunc = require("./logs");
-setInterval(intervalFunc, 300000);
+// setInterval(intervalFunc, 300000);
 
 module.exports = {
   app,
