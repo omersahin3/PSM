@@ -4,24 +4,21 @@ const Service = db.service;
 const Server = db.server;
 const Log = db.log;
 
-exports.findAll = (req, res) => {
-  ServerService.findAll({
-    include: ["logs"],
-    order: [
-      ["id", "ASC"],
-      [Log, "id", "ASC"]
-    ]
-  })
-    .then((data) => {
-      res.send(data);
+exports.findAll = async (req, res) => {
+  try {
+    const data = await ServerService.findAll({
+      include: ["logs"],
+      order: [
+        ["id", "ASC"],
+        [Log, "id", "ASC"]
+      ]
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while retrieving  server_services.",
-      });
+    res.send(data);
+  } catch (err){
+    res.status(500).send({
+      message: err.message || "Some error occurred while retrieving  server_services."
     });
+  }
 };
 exports.dashboard = async (req, res) => {
   try {

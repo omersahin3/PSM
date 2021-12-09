@@ -1,7 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
     const Service = sequelize.define("services", {
         name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true
         },
         description: {
             type: Sequelize.TEXT

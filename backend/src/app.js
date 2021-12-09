@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
-const { initialRole, initialServer, initialService, initialUser } = require("./database");
+const { initialRole, initialServer, initialService, initialUser } = require("./initdb");
 
 
 db.sequelize.sync();
@@ -48,6 +48,7 @@ app.use((err, req, res, next) => {
 
 const intervalFunc = require("./logs");
 // setInterval(intervalFunc, 300000);
+// setInterval(intervalFunc, 1000);
 
 module.exports = {
   app,
