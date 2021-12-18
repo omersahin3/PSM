@@ -39,7 +39,7 @@ export class ServerAddComponent implements OnInit {
       description: this.server.description,
       service: this.serviceId
     };
-    console.log(body)
+    // console.log(body)
     this.serverService.create(body).subscribe(data => {
       this.alertifyService.success(data.data.dns_name + " Successfully added !")
       this.dialogRef.closeAll();

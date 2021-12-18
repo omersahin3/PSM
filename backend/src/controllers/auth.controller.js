@@ -34,6 +34,9 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async(req, res) => {
+  if (!req.body.username || !req.body.password) {
+    return res.status(400).send({ message: "Fill in the required fields!" });
+  }
   try {
     const user = await User.findOne({
       where: {

@@ -1,14 +1,25 @@
-.mat-toolbar{
-    background-color: #18181B;
+.header {
+  height: 100%;
+}
+.mat-toolbar {
+  background-color: #18181b;
+  height: 100%;
 }
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .mat-icon {
-    color: white;
+  color: white;
 }
 span {
-    font-size: 13px;
-    margin: 0 5px;
-    color: whitesmoke;
+  font-size: 13px;
+  margin: 0 5px;
+  color: whitesmoke;
+}
+.ellipsis {
+  color: whitesmoke;
+  text-overflow: ellipsis;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
 }

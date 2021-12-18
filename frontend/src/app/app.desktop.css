@@ -1,6 +1,6 @@
-@media (max-width: 1149.98px) and (min-width: 740px){ 
+@media (max-width: 1349.98px) and (min-width: 740px){ 
     .cards{
-        grid-template: repeat(6, 1fr) / repeat(2, 1fr) !important;
+        grid-template: repeat(4, 1fr) / repeat(2, 1fr) !important;
     }
 }
 .mat-header-cell{
