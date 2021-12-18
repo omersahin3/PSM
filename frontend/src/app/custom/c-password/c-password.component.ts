@@ -48,17 +48,22 @@ export class CPasswordComponent implements OnInit {
     {
       if (confirm_new_password === new_password) {
         this.userService.changepass(this.currentUser.id, this.user).subscribe(data => {
-          this.alertifyService.success(this.currentUser.username + " Your password has been successfully changed !")
+          this.alertifyService.success(this.currentUser.username + " Successfully changed !")
           this.dialogRef.closeAll();
         }, error => {
           console.log(error + "Could not change password");
           this.alertifyService.error(" Could not change password ");
         });
-      }else{
-        this.alertifyService.error("You entered two different passwords");
+      } else {
+        this.alertifyService.error("The password confirmation does not match");
       }
     }else{
-      this.alertifyService.warning(" you entered the same password ");
+      if(confirm_new_password === new_password){
+        this.alertifyService.warning(" Must be different from current password ");
+      } else {
+        this.alertifyService.error("The password confirmation does not match");
+      }
+      
     }
   }
 }

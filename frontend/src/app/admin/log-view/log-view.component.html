@@ -25,7 +25,7 @@
     <!-- createdAt Column -->
     <ng-container matColumnDef="createdAt"> 
       <mat-header-cell *matHeaderCellDef mat-sort-header> Created Time </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="date"> {{element.createdAt |  date: 'dd/MM/yyyy hh:mm' }} </mat-cell>
+      <mat-cell *matCellDef="let element" class="date"> {{element.createdAt |  date: 'dd/MM/yyyy hh:mm a' }} </mat-cell>
     </ng-container>
 
     <!-- Status Column -->

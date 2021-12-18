@@ -4,7 +4,7 @@
     height: 100%;
     width: 100%;
     align-items: center;
-    min-width: 680px;
+    min-width: 900px;
     padding: 50px 50px 0px 50px;
 }
 .title h2{
@@ -40,25 +40,23 @@
 .mat-table, .mat-paginator{
     width: 100%;
     background: #0E0E10;
-    min-width: 580px;
+    min-width: 800px;
 }
 .mat-header-cell {
     font-weight: 600;
     font-size: 16px;
     background-color: #151319;
     color: #d4d4d4;
-    padding-left: 45px;
     height: 56px;
-    min-width: 110px;
+    min-width: 160px;
 }
 .mat-cell {
     font-weight: 400;
     font-size: 14px;
     background: #0E0E10;
     color: #B8B8B8;
-    padding-left: 45px;
     border-bottom-color: #323036;
-    min-width: 110px;
+    min-width: 160px;
 }
 .mat-row:hover .mat-cell {
     background-color: white;

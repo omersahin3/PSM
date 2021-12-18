@@ -1,8 +1,9 @@
 @import "../../../app/app.tablet.css" screen and (max-width: 991.98px);
 @import "../../../app/app.landscape.css" screen and (max-width: 767.98px);
-@import "../../../app/app.desktop.css" screen and (max-width: 1199.98px);
+@import "../../../app/app.desktop.css" screen and (max-width: 1399.98px); /* default 1199.98*/
 .dashboard {
-  min-width: 243px;
+  min-width: 310px;
+  width: 100%;
   padding: 50px 20px 20px 20px;
 }
 .title h2 {
@@ -13,7 +14,7 @@
 .cards {
   display: grid;
   width: 100%;
-  grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
 }
 .card {
   margin: 8px;
@@ -79,12 +80,10 @@
   justify-content: center;
   align-items: center;
 }
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 0px;
+.ellipsis {
+  color: whitesmoke;
+  text-overflow: ellipsis;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
 }
-::-webkit-scrollbar-thumb {
-  background-color: black;
-  border-radius: 50%;
-}
-

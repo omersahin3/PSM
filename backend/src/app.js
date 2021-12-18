@@ -27,7 +27,6 @@ db.sequelize.sync();
 //   initialRole();initialUser();
 //   initialServer();initialService();
 // });
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
@@ -47,8 +46,7 @@ app.use((err, req, res, next) => {
 });
 
 const intervalFunc = require("./logs");
-// setInterval(intervalFunc, 300000);
-// setInterval(intervalFunc, 1000);
+setInterval(intervalFunc, 300000);
 
 module.exports = {
   app,

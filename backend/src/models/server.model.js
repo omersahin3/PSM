@@ -1,7 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
     const Server = sequelize.define("servers", {
         dns_name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true
         },
         description: {
             type: Sequelize.TEXT
