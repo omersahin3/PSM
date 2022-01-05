@@ -97,11 +97,18 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #00000072;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: red;
-  border-radius: 50%;
+  background-color: #D4D4D41F;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-thumb:hover {
+  transition: 0.6s;
+  background-color: #D4D4D43B;
 }
 /*  MAT-İCON */
 .success{

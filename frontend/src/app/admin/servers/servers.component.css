@@ -86,6 +86,10 @@
     color: #FFFFFF99;
     cursor: pointer;
 }
-
+/* AUTOFILL */
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white;
+}
 
 
